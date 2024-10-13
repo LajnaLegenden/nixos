@@ -72,9 +72,17 @@
     # '';
   };
 
-  xdg.configFile."ulauncher/shortcuts.json".source = ../dots/ulauncher/shortcuts.json;
-  xdg.configFile."ulauncher/settings.json".source = ../dots/ulauncher/settings.json;
-  xdg.configFile."ulauncher/extensions.json".source = ../dots/ulauncher/extensions.json;
+
+  # Workaround to make file wrtieable
+  xdg.configFile."ulauncher/.home-manager-copy-trigger" = {
+  text = "This file triggers the copy operation";
+  onChange = ''
+    rm -rf ${config.xdg.configHome}/ulauncher
+    cp -R ${../dots/ulauncher} ${config.xdg.configHome}/ulauncher
+    chmod -R u+w ${config.xdg.configHome}/ulauncher
+  '';
+};
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
   # Manager then you have to manually source 'hm-session-vars.sh' located at

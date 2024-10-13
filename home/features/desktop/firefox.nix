@@ -70,6 +70,10 @@ in {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4354445/enhancer_for_youtube-2.0.126.1.xpi";
             installation_mode = "force_installed";
           };
+          "pywallfox@frewacom.org" = {
+            install_url = "https://addons.mozilla.org/firefox/downloads/file/4061156/pywalfox-2.0.11.xpi";
+            installation_mode = "force_installed";
+          };
           "sponsorBlocker@ajay.app" = {
             install_url = "https://addons.mozilla.org/firefox/downloads/file/4364207/sponsorblock-5.9.4.xpi";
             installation_mode = "force_installed";

@@ -48,6 +48,11 @@ in {
       # Documentation
       man-pages
 
+      gh
+      bison
+      flex
+      graphviz
+
     ];
 
     programs.git = {

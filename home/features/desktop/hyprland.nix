@@ -143,6 +143,7 @@ in {
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
+          "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
             # Resize windows
           "$mainMod ALT, left, resizeactive, -20 0"
           "$mainMod ALT, right, resizeactive, 20 0"
@@ -168,8 +169,8 @@ in {
           "$mainMod SHIFT, 8, movetoworkspace, 8"
           "$mainMod SHIFT, 9, movetoworkspace, 9"
           "$mainMod SHIFT, 0, movetoworkspace, 10"
-          "$mainMod, S, togglespecialworkspace, magic"
-          "$mainMod SHIFT, S, movetoworkspace, special:magic"
+          "$mainMod, W, togglespecialworkspace, magic"
+          "$mainMod SHIFT, W, movetoworkspace, special:magic"
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
            # Media controls
