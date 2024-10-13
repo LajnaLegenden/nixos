@@ -248,6 +248,7 @@ in {
       wtype
       ydotool
       wttrbar
+      ulauncher
     ];
   };
 }

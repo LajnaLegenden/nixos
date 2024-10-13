@@ -63,6 +63,7 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -71,6 +72,9 @@
     # '';
   };
 
+  xdg.configFile."ulauncher/shortcuts.json".source = ../dots/ulauncher/shortcuts.json;
+  xdg.configFile."ulauncher/settings.json".source = ../dots/ulauncher/settings.json;
+  xdg.configFile."ulauncher/extensions.json".source = ../dots/ulauncher/extensions.json;
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home
   # Manager then you have to manually source 'hm-session-vars.sh' located at

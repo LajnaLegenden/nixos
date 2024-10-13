@@ -2,6 +2,7 @@
 
 {
 imports = [
-  ./thurnar.nix
+  ./thunar.nix
+  ./stream-deck.nix
 ];
 }

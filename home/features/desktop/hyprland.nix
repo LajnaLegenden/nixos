@@ -40,6 +40,7 @@ in {
         exec-once = [
           "waybar"
           "hyprctl dispatch workspace 1"
+          "ulauncher --hide-window"
         ];
 
         env = [
@@ -133,15 +134,20 @@ in {
           "$mainMod, Q, exec, kitty"
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
-          "$mainMod, E, exec, dolphin"
+          "$mainMod, E, exec, thunar"
           "$mainMod, V, togglefloating,"
-          "$mainMod, R, exec, wofi --show drun"
+          "$mainMod, R, exec, ulauncher-toggle"
           "$mainMod, P, pseudo,"
           "$mainMod, J, togglesplit,"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
+            # Resize windows
+          "$mainMod ALT, left, resizeactive, -20 0"
+          "$mainMod ALT, right, resizeactive, 20 0"
+          "$mainMod ALT, up, resizeactive, 0 -20"
+          "$mainMod ALT, down, resizeactive, 0 20"
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
           "$mainMod, 3, workspace, 3"
@@ -175,6 +181,13 @@ in {
           ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
           ", XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        ];
+
+        binde = [
+          "$mainMod ALT, left, resizeactive, -20 0"
+          "$mainMod ALT, right, resizeactive, 20 0"
+          "$mainMod ALT, up, resizeactive, 0 -20"
+          "$mainMod ALT, down, resizeactive, 0 20"
         ];
         
 

@@ -1,0 +1,42 @@
+{
+    "b9f75a80-f679-4f5c-905e-0993ab00cee0": {
+        "id": "b9f75a80-f679-4f5c-905e-0993ab00cee0",
+        "name": "Google Search",
+        "keyword": "g",
+        "cmd": "https://google.com/search?q=%s",
+        "icon": "/nix/store/20v3xms4d3kvxx2f4b3v6k34hdryxjgj-ulauncher-5.15.7/share/ulauncher/media/google-search-icon.png",
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1728806904.262672
+    },
+    "1f3e59ce-e270-446c-97d0-3255151aa89b": {
+        "id": "1f3e59ce-e270-446c-97d0-3255151aa89b",
+        "name": "Nixpkgs",
+        "keyword": "nix",
+        "cmd": "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1728808514.700454
+    },
+    "1d10a7e0-5271-4832-94d5-0867ebf65473": {
+        "id": "1d10a7e0-5271-4832-94d5-0867ebf65473",
+        "name": "Claude",
+        "keyword": "ai",
+        "cmd": "https://claude.ai/new?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1728808583.5783358
+    },
+    "49851690-4452-40ef-ae1a-fea65a5eb3ce": {
+        "id": "49851690-4452-40ef-ae1a-fea65a5eb3ce",
+        "name": "DuckDuckGo",
+        "keyword": "du",
+        "cmd": "https://duckduckgo.com/?q=%s",
+        "icon": null,
+        "is_default_search": true,
+        "run_without_argument": false,
+        "added": 1728808641.1752574
+    }
+}

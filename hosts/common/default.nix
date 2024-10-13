@@ -7,6 +7,7 @@ let
  {
   imports = [
     ./users
+    ./programs
     inputs.home-manager.nixosModules.home-manager
   ];
   home-manager = {
@@ -70,7 +71,7 @@ let
       - JOB: "${pkgs.interception-tools}/bin/intercept -g $DEVNODE | ${pkgs.interception-tools-plugins.caps2esc}/bin/caps2esc -m 1 | ${pkgs.interception-tools}/bin/uinput -d $DEVNODE"
         DEVICE:
           EVENTS:
-            EV_KEY: [KEY_CAPSLOCK, KEY_ESC]
+            EV_KEY: [KEY_CAPSLOCK, KEY_LEFTMETA]
     '';
   };
 
