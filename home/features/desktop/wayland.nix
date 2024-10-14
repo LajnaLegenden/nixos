@@ -182,12 +182,11 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 0;
-          modules-left = ["clock" "custom/weather" "hyprland/workspaces"];
+          modules-left = ["clock" "custom/weather" "hyprland/workspaces" "battery"];
           modules-center = ["hyprland/window"];
           modules-right = [
             "tray"
           ];
-
           "hyprland/window" = {
             format = "{}";
             seperate-outputs = true;

@@ -8,6 +8,8 @@
     ./slack.nix
     ./thunderbird.nix
     ./dunst.nix
+    ./wallpaper.nix
+    ./spotify.nix
   ];
 
   home.packages = with pkgs; [

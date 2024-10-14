@@ -23,8 +23,10 @@
     fonts.enable = true;
     firefox.enable =true;
     slack.enable = true;
+    wallpaper.enable=true;
     vesktop.enable = false;
     thunderbird.enable = true;
+    spotify.enable = true;
     dunst = {
       enable = true;
       colorFile = "$HOME/.cache/wal/colors.sh";

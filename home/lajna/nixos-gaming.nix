@@ -23,6 +23,9 @@
     fonts.enable = true;
     firefox.enable =true;
     vesktop.enable = true;
+    wallpaper.enable = true;
+        spotify.enable = true;
+
     dunst = {
       enable = true;
       colorFile = "$HOME/.cache/wal/colors.sh";
