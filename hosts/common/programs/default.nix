@@ -12,6 +12,9 @@ imports = [
     pywalfox-native
 
     libnotify
+
+    hyprlock
+
    ];
 
   

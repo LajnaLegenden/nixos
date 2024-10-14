@@ -11,6 +11,12 @@ in {
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
 
   config = mkIf cfg.enable {
+    home.file = {
+    ".config/hypr/generate_hyprlock_config.sh" = {
+      source = ../../scripts/hyprlock.sh;  # Path to your script file
+      executable = true;
+    };
+  };
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -42,7 +48,7 @@ in {
           "hyprctl dispatch workspace 1"
           "ulauncher --hide-window"
           "swww-daemon"
-          "swww img nixConfig/bgs/wallpaper.jpg"
+          ".config/hypr/set_random_wallpaper.sh"
         ];
 
         env = [
