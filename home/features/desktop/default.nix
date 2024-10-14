@@ -4,6 +4,10 @@
     ./hyprland.nix
     ./fonts.nix
     ./firefox.nix
+    ./vesktop.nix
+    ./slack.nix
+    ./thunderbird.nix
+    ./dunst.nix
   ];
 
   home.packages = with pkgs; [

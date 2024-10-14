@@ -22,6 +22,10 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    kolide-launcher = {
+      url = "github:/kolide/nix-agent/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -45,12 +49,24 @@
           specialArgs = { inherit inputs outputs; };
           modules = [ ./hosts/nixos-gaming ];
         };
+        nixos-work-laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+             ./hosts/nixos-work-laptop
+              inputs.kolide-launcher.nixosModules.kolide-launcher
+           ];
+        };
       };
       homeConfigurations = {
         "lajna@nixos-gaming" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [ ./home/lajna/nixos-gaming.nix ];
+        };
+        "lajna@nixos-work-laptop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [ ./home/lajna/nixos-work-laptop.nix ];
         };
       };
     };

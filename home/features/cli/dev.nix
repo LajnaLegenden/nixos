@@ -5,65 +5,75 @@ with lib; let
 in {
   options.features.cli.dev = {
     enable = mkEnableOption "enable extended dev configuration";
-  };
-
-  config = mkIf cfg.enable {
-    home.packages = with pkgs; [
-      # Version Control
-      git
-      git-lfs
-      
-      # Build tools
-      gcc
-      gnumake
-      cmake
-      
-      # Node.js and TypeScript
-      nodejs
-      nodePackages.npm
-      nodePackages.typescript
-      nodePackages.ts-node
-      
-      # Bun
-      bun
-      
-      # Package managers
-      pnpm
-      
-      # Linters and formatters
-      eslint
-      nodePackages.prettier
-      
-      # Debugging tools
-      gdb
-      
-      # System tools
-      htop
-      ncdu
-      
-      # Network tools
-      curl
-      wget
-      
-      # Documentation
-      man-pages
-
-      gh
-      bison
-      flex
-      graphviz
-
-    ];
-
-    programs.git = {
-      enable = true;
-      userName = "LajnaLegenden";
-      userEmail = "34426335+LajnaLegenden@users.noreply.github.com";
-      extraConfig = {
-        core = {
-          editor = "nano";  # Using nano as a simple default editor
-        };
-      };
+    isWorkMachine = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Whether this is a work machine";
     };
   };
+
+  config = mkIf cfg.enable (mkMerge [
+    {
+      # Common configurations for all machines
+      home.packages = with pkgs; [
+        # Version Control
+        git
+        git-lfs
+        # Build tools
+        gcc
+        gnumake
+        cmake
+        # Node.js and TypeScript
+        nodejs
+        nodePackages.npm
+        nodePackages.typescript
+        nodePackages.ts-node
+        # Bun
+        bun
+        # Package managers
+        corepack
+        # Linters and formatters
+        eslint
+        nodePackages.prettier
+        # Debugging tools
+        gdb
+        # System tools
+        htop
+        ncdu
+        # Network tools
+        curl
+        wget
+        # Documentation
+        man-pages
+        gh
+        bison
+        flex
+        graphviz
+      ];
+
+      programs.git.enable = true;
+    }
+
+    (mkIf cfg.isWorkMachine {
+      # Work laptop specific configurations
+      programs.git = {
+        userName = "Linus Jansson";  # Replace with actual work name
+        userEmail = "linus.jansson@mediatool.com";  # Replace with actual work email
+        extraConfig = {
+          core.editor = "nano"; 
+        };
+      };
+    })
+
+    (mkIf (!cfg.isWorkMachine) {
+      # Default configurations for other machines
+      programs.git = {
+        userName = "LajnaLegenden";
+        userEmail = "34426335+LajnaLegenden@users.noreply.github.com";
+        extraConfig = {
+          core.editor = "nano";
+        };
+      };
+    })
+  ]);
 }

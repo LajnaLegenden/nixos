@@ -41,6 +41,8 @@ in {
           "waybar"
           "hyprctl dispatch workspace 1"
           "ulauncher --hide-window"
+          "swww-daemon"
+          "swww img nixConfig/bgs/wallpaper.jpg"
         ];
 
         env = [

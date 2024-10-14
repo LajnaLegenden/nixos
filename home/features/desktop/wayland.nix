@@ -249,6 +249,7 @@ in {
       ydotool
       wttrbar
       ulauncher
+      dunst
     ];
   };
 }

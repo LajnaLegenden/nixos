@@ -10,6 +10,8 @@ imports = [
     pywal
     swww
     pywalfox-native
+
+    libnotify
    ];
 
 }

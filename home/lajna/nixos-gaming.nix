@@ -11,7 +11,10 @@
     zsh.enable = true;
     fzf.enable = true;
     neofetch.enable = true;
-    dev.enable = true;
+    dev = {
+      enable = true;
+      isWorkMachine = false;  # Set to false for personal machines
+    };
   };
 
   desktop = {
