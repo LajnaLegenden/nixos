@@ -25,17 +25,17 @@ in {
         };
 
         plugin =  {
-    csgo-vulkan-fix =  {
-        res_w = 2560;
-        res_h = 1440;
+          csgo-vulkan-fix =  {
+              res_w = 2560;
+              res_h = 1440;
 
-        # NOT a regex! This is a string and has to exactly match initial_class
-        class = "cs2";
+              # NOT a regex! This is a string and has to exactly match initial_class
+              class = "cs2";
 
-        # Whether to fix the mouse position. A select few apps might be wonky with this.
-        fix_mouse = true;
-    };
-};
+              # Whether to fix the mouse position. A select few apps might be wonky with this.
+              fix_mouse = true;
+          };
+        };
 
         exec-once = [
           "waybar"

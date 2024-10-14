@@ -22,6 +22,12 @@
     hyprland.enable = true;
     fonts.enable = true;
     firefox.enable =true;
+    vesktop.enable = true;
+    dunst = {
+      enable = true;
+      colorFile = "$HOME/.cache/wal/colors.sh";
+      # You can add more custom settings here if needed
+    };
   };
  };
  
