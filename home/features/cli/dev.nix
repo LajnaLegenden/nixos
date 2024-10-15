@@ -49,6 +49,24 @@ in {
         bison
         flex
         graphviz
+
+
+
+  stylua
+  lazygit
+  unzip
+  go
+  
+  lua
+  
+  luarocks
+  
+  
+  python3
+  python3Packages.pip
+  tree-sitter
+
+
       ];
 
       programs.git.enable = true;
