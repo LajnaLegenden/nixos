@@ -70,7 +70,10 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
-
+  xdg.configFile."nvim" = {
+    source = ../dots/nvim;
+    recursive = true;
+  };
 
   # Workaround to make file wrtieable
   xdg.configFile."ulauncher/.home-manager-copy-trigger" = {
