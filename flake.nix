@@ -22,6 +22,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    sno.url = "github:LajnaLegenden/sno";
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";

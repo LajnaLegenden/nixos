@@ -75,7 +75,7 @@ let
     '';
   };
 
-
+environment.systemPackages = [inputs.sno.packages.${pkgs.system}.default];
   security = {
     polkit.enable = true;
     pam.services.hyprlock = {};
