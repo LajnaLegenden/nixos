@@ -1,8 +1,7 @@
 { config, lib, pkgs, ... }:
-
 with lib; let
   cfg = config.features.cli.dev;
-in {
+ in {
   options.features.cli.dev = {
     enable = mkEnableOption "enable extended dev configuration";
     isWorkMachine = mkOption {
@@ -11,7 +10,6 @@ in {
       description = "Whether this is a work machine";
     };
   };
-
   config = mkIf cfg.enable (mkMerge [
     {
       # Common configurations for all machines
@@ -49,40 +47,29 @@ in {
         bison
         flex
         graphviz
-
-
-
-  stylua
-  lazygit
-  unzip
-  go
-  
-  lua
-  
-  luarocks
-  
-  
-  python3
-  python3Packages.pip
-  tree-sitter
-
+        stylua
+        lazygit
+        unzip
+        go
+        lua
+        luarocks
+        python3
+        python3Packages.pip
+        tree-sitter
 
       ];
-
       programs.git.enable = true;
     }
-
     (mkIf cfg.isWorkMachine {
       # Work laptop specific configurations
       programs.git = {
-        userName = "Linus Jansson";  # Replace with actual work name
-        userEmail = "linus.jansson@mediatool.com";  # Replace with actual work email
+        userName = "Linus Jansson"; # Replace with actual work name
+        userEmail = "linus.jansson@mediatool.com"; # Replace with actual work email
         extraConfig = {
-          core.editor = "nano"; 
+          core.editor = "nano";
         };
       };
     })
-
     (mkIf (!cfg.isWorkMachine) {
       # Default configurations for other machines
       programs.git = {

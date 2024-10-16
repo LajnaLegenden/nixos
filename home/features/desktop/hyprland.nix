@@ -206,5 +206,45 @@ in {
         ];
       };
     };
+ home.packages = with pkgs; [
+    
+    brightnessctl
+  ];
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+            lockCmd = "pidof hyprlock || hyprlock";
+    beforeSleepCmd = "loginctl lock-session";
+    afterSleepCmd = "hyprctl dispatch dpms on";
+          };
+         listeners = [
+      {
+        timeout = 150;
+        onTimeout = "brightnessctl -s set 10";
+        onResume = "brightnessctl -r";
+      }
+      {
+        timeout = 150;
+        onTimeout = "brightnessctl -sd rgb:kbd_backlight set 0";
+        onResume = "brightnessctl -rd rgb:kbd_backlight";
+      }
+      {
+        timeout = 300;
+        onTimeout = "loginctl lock-session";
+      }
+      {
+        timeout = 380;
+        onTimeout = "hyprctl dispatch dpms off";
+        onResume = "hyprctl dispatch dpms on";
+      }
+      {
+        timeout = 1800;
+        onTimeout = "systemctl suspend";
+      }
+    ];
+
+      };
+    };
   };
 }

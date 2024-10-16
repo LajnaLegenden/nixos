@@ -73,7 +73,7 @@ in
             class = "Dunst";
             startup_notification = "false";
             verbosity = "mesg";
-            corner_radius = 0;
+            corner_radius = 10;
           };
         }
       ];

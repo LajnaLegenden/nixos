@@ -38,7 +38,7 @@ swww img "$WALLPAPER_PATH"
 pywalfox update
 
 # Generate new Hyprlock configuration
-./generate_hyprlock_config.sh
+$HOME/.config/hypr/generate_hyprlock_config.sh
 
 # Optional: Reload Hyprland config to apply any theme changes
 hyprctl reload
