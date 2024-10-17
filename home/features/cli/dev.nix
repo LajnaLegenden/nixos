@@ -44,6 +44,7 @@ with lib; let
         # Documentation
         man-pages
         gh
+        
         bison
         flex
         graphviz
@@ -52,12 +53,15 @@ with lib; let
         unzip
         go
         lua
+        cargo
         luarocks
         python3
         python3Packages.pip
         tree-sitter
+        nil
 
       ];
+      
       programs.git.enable = true;
     }
     (mkIf cfg.isWorkMachine {

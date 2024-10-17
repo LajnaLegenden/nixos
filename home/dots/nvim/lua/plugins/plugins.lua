@@ -27,6 +27,9 @@ end
 -- Return the plugin configurations
 return {
   {
+    "kchmck/vim-coffee-script"
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
@@ -41,7 +44,7 @@ return {
                 propertyDeclarationTypes = { enabled = false },
                 variableTypes = { enabled = false },
               },
-            },
+            }, 
           },
         },
         gopls = {
@@ -108,11 +111,9 @@ return {
         "stylua",
         "shfmt",
         "emmet-language-server",
+        "coffeesense-language-server",
       },
     },
-  },
-  {
-    "AlejandroSuero/pretty-ts-errors.nvim",
   },
   {
     "olrtg/nvim-emmet",
