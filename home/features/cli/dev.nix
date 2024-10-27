@@ -62,7 +62,6 @@ with lib; let
         neovim
         zeal
         gitkraken      
-        clang
         clang-tools
         clangStdenv
         jetbrains.clion
