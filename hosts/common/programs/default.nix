@@ -4,6 +4,7 @@
 imports = [
   ./thunar.nix
   ./stream-deck.nix
+  ./docker.nix
 ];
 
   environment.systemPackages = with pkgs; [ 
@@ -15,6 +16,8 @@ imports = [
 
     hyprlock
 
+    networkmanager_dmenu
+    networkmanagerapplet
    ];
 
   

@@ -60,6 +60,11 @@ with lib; let
         tree-sitter
         nil
 
+        neovim
+zeal
+        gitkraken
+
+        
       ];
       
       programs.git.enable = true;

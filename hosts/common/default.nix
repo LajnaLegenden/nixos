@@ -1,9 +1,6 @@
 # Common configuration for all hosts
 
 { pkgs, lib, inputs, outputs, ... }:
-let 
-    devShells = import ./../../devshells/all.nix { inherit pkgs; };
-  in
  {
   imports = [
     ./users

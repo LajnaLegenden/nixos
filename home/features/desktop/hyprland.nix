@@ -46,6 +46,7 @@ in {
         exec-once = [
           "waybar"
           "hyprctl dispatch workspace 1"
+          "nm-applet"
           "ulauncher --hide-window"
           "swww-daemon"
           ".config/hypr/set_random_wallpaper.sh"
@@ -145,13 +146,16 @@ in {
           "$mainMod, E, exec, thunar"
           "$mainMod, V, togglefloating,"
           "$mainMod, R, exec, ulauncher-toggle"
+          "$mainMod, T, exec, firefox "
           "$mainMod, P, pseudo,"
+          "$mainMod, L, exec, hyprlock"
           "$mainMod, J, togglesplit,"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"
           "$mainMod, down, movefocus, d"
           "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
+          "$mainMod, N, exec, swaync-client -t -sw"
             # Resize windows
           "$mainMod ALT, left, resizeactive, -20 0"
           "$mainMod ALT, right, resizeactive, 20 0"
@@ -199,7 +203,10 @@ in {
           "$mainMod ALT, down, resizeactive, 0 20"
         ];
         
-
+workspace = [
+      "w[t1], gapsout:0, gapsin:0, border:0, rounding:0"
+      "w[tg1], gapsout:0, gapsin:0, border:0, rounding:0"
+    ];
         bindm = [
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
@@ -207,7 +214,7 @@ in {
       };
     };
  home.packages = with pkgs; [
-    
+    swaynotificationcenter
     brightnessctl
   ];
     services.hypridle = {

@@ -162,14 +162,12 @@ in {
 
         #battery {
             color: #a6e3a1;
-            border-radius: 0 10px 10px 0;
             margin-right: 10px;
             border-left: 0px;
+            border-radius: 0 10px 10px 0;
         }
 
         #custom-weather {
-            border-radius: 0px 10px 10px 0px;
-            border-right: 0px;
             margin-left: 0px;
         }
       '';
@@ -182,10 +180,10 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 0;
-          modules-left = ["clock" "custom/weather" "hyprland/workspaces" "battery"];
+          modules-left = ["clock" "custom/weather" "pulseaudio" "battery" "hyprland/workspaces"];
           modules-center = ["hyprland/window"];
           modules-right = [
-            "tray"
+            "tray"  
           ];
           "hyprland/window" = {
             format = "{}";

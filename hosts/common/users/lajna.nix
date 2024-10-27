@@ -23,5 +23,5 @@
     packages = [inputs.home-manager.packages.${pkgs.system}.default];
   };
   home-manager.users.lajna =
-    import lajna/${config.networking.hostName}.nix;
+    import ../../../home/lajna/${config.networking.hostName}.nix;
 }

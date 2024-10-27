@@ -87,6 +87,26 @@ return {
     },
   },
   {
+  "stevearc/conform.nvim",
+  opts = {
+    formatters_by_ft = {
+      ["javascript"] = { "eslint" },
+      ["javascriptreact"] = { "eslint" },
+      ["typescript"] = { "eslint" },
+      ["typescriptreact"] = { "eslint" }
+    },
+    lsp_fallback = {
+      exclude = { "vtsls" }
+    }
+  }
+},
+  {
+  "folke/neoconf.nvim",
+  cmd = "Neoconf",
+  opts = {},
+    priority = 1000
+},
+  {
     "christoomey/vim-tmux-navigator",
     lazy = false,
     cmd = {
