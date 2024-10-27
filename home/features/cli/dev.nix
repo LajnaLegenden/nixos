@@ -59,12 +59,13 @@ with lib; let
         python3Packages.pip
         tree-sitter
         nil
-
         neovim
-zeal
-        gitkraken
-
-        
+        zeal
+        gitkraken      
+        clang
+        clang-tools
+        clangStdenv
+        jetbrains.clion
       ];
       
       programs.git.enable = true;

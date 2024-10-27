@@ -132,6 +132,7 @@ return {
         "shfmt",
         "emmet-language-server",
         "coffeesense-language-server",
+        "clangd"
       },
     },
   },
