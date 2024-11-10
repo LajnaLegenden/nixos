@@ -91,6 +91,7 @@ in {
           ls = "eza";
           grep = "rg";
           ps = "procs";
+          yui = "yarn upgrade-interactive --latest && yarn-dedupe && yarn";
           cd = "z";
           cat = "bat";
           rebuildSystem = "sudo nixos-rebuild switch --flake /home/lajna/nixConfig/";

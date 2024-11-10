@@ -4,6 +4,7 @@
     ./fzf.nix
     ./neofetch.nix
     ./dev.nix
+    ./env.nix
   ];
   programs.zoxide = {
     enable = true;

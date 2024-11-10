@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 with lib; let
   cfg = config.features.cli.dev;
  in {
@@ -12,8 +12,12 @@ with lib; let
   };
   config = mkIf cfg.enable (mkMerge [
     {
-      # Common configurations for all machines
+     home.sessionPath = [ 
+  "$HOME/bin"
+  "$HOME/.npm-global"
+];      # Common configurations for all machines
       home.packages = with pkgs; [
+inputs.son.packages.${pkgs.system}.default
         # Version Control
         git
         git-lfs
@@ -59,12 +63,12 @@ with lib; let
         python3Packages.pip
         tree-sitter
         nil
-        neovim
         zeal
         gitkraken      
         clang-tools
         clangStdenv
         jetbrains.clion
+
       ];
       
       programs.git.enable = true;

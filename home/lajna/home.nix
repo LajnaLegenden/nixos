@@ -62,8 +62,14 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
-    
-
+   ".sh/brightness.sh" = {
+      executable = true;
+      source = "${../scripts/brightness.sh}";
+    };
+   ".sh/volume.sh" = {
+      executable = true;
+      source = "${../scripts/volume.sh}";
+    };
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose
