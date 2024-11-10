@@ -68,7 +68,10 @@ inputs.son.packages.${pkgs.system}.default
         clang-tools
         clangStdenv
         jetbrains.clion
-
+        eslint_d
+        neovide
+        nixfmt-rfc-style
+        statix
       ];
       
       programs.git.enable = true;
