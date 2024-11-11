@@ -1,6 +1,6 @@
 { pkgs, config, libs, ... }:
 {
-  servives.tailscale = {
+  services.tailscale = {
     enable = true;
-};
-
+  };
+}
