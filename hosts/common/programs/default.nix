@@ -5,6 +5,7 @@ imports = [
   ./thunar.nix
   ./stream-deck.nix
   ./docker.nix
+  ./tailscale.nix
 ];
 
   environment.systemPackages = with pkgs; [ 
