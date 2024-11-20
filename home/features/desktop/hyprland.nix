@@ -118,13 +118,6 @@ in {
           force_default_wallpaper = -1;
         };
 
-        device = [
-          {
-            name = "epic-mouse-v1";
-            sensitivity = -0.5;
-          }
-        ];
-
          "windowrule" = [
         "opacity 1.0 1.0,class:.*"
         "opacity 0.8 0.8,class:.*,floating:0,fullscreen:0"
@@ -143,20 +136,24 @@ in {
           "$mainMod, V, togglefloating,"
           "$mainMod, R, exec, ulauncher-toggle"
           "$mainMod, T, exec, firefox "
-          "$mainMod, P, pseudo,"
-          "$mainMod, L, exec, hyprlock"
-          "$mainMod, J, togglesplit,"
+          "$mainMod, U, pseudo,"
+          "$mainMod, P, exec, hyprlock"
+          "$mainMod, I, togglesplit,"
           "$mainMod, left, movefocus, l"
+          "$mainMod, H, movefocus, l"
           "$mainMod, right, movefocus, r"
+          "$mainMod, L, movefocus, r"
           "$mainMod, up, movefocus, u"
+          "$mainMod, K, movefocus, u"
           "$mainMod, down, movefocus, d"
+          "$mainMod, J, movefocus, d"
           "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
           "$mainMod, N, exec, swaync-client -t -sw"
             # Resize windows
-          "$mainMod ALT, left, resizeactive, -20 0"
-          "$mainMod ALT, right, resizeactive, 20 0"
-          "$mainMod ALT, up, resizeactive, 0 -20"
-          "$mainMod ALT, down, resizeactive, 0 20"
+          "$mainMod ALT, left, resizeactive, -40 0"
+          "$mainMod ALT, right, resizeactive, 40 0"
+          "$mainMod ALT, up, resizeactive, 0 -40"
+          "$mainMod ALT, down, resizeactive, 0 40"
           "$mainMod, 1, workspace, 1"
           "$mainMod, 2, workspace, 2"
           "$mainMod, 3, workspace, 3"
@@ -197,10 +194,10 @@ in {
         ];
 
         binde = [
-          "$mainMod ALT, left, resizeactive, -20 0"
-          "$mainMod ALT, right, resizeactive, 20 0"
-          "$mainMod ALT, up, resizeactive, 0 -20"
-          "$mainMod ALT, down, resizeactive, 0 20"
+          "$mainMod ALT, left, resizeactive, -40 0"
+          "$mainMod ALT, right, resizeactive, 40 0"
+          "$mainMod ALT, up, resizeactive, 0 -40"
+          "$mainMod ALT, down, resizeactive, 0 40"
         ];
         
 workspace = [
@@ -250,7 +247,6 @@ workspace = [
         onTimeout = "systemctl suspend";
       }
     ];
-
       };
     };
   };

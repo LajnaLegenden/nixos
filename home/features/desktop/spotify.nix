@@ -11,6 +11,14 @@ in {
     mkEnableOption "install spotify";
 
   config = mkIf cfg.enable {
+
+    home.file = {
+    ".config/spicetify/config-xpui.ini".text = ''
+      [Setting]
+      spotify_path = /etc/profiles/per-user/lajna/spotify
+        '';
+    };
+    
     home.packages = with pkgs; [
      spicetify-cli
      spotifywm

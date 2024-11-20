@@ -69,9 +69,11 @@ inputs.son.packages.${pkgs.system}.default
         clangStdenv
         jetbrains.clion
         eslint_d
-        neovide
         nixfmt-rfc-style
         statix
+        code-cursor
+        mongodb-compass
+        httpie-desktop
       ];
       
       programs.git.enable = true;

@@ -76,5 +76,18 @@
     polkit.enable = true;
     pam.services.hyprlock = {};
 };
+programs.ssh = {
+    startAgent = true;
+    # Optional: set how long keys should be remembered
+    agentTimeout = "infinity"; # Or "infinity" for no timeout
+  };
 
+   programs.ssh.extraConfig = ''
+    AddKeysToAgent yes
+    
+    # Optional: Configure specific keys
+    Host *
+      IdentityFile ~/.ssh/id_ed25519
+      # Add more IdentityFile lines for other keys
+  '';         
  }

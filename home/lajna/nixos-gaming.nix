@@ -24,6 +24,7 @@
     firefox.enable =true;
     vesktop.enable = true;
     wallpaper.enable = true;
+      chrome.enable = true;
         spotify.enable = true;
 
     dunst = {

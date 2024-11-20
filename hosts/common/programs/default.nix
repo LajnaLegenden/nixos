@@ -3,9 +3,9 @@
 {
 imports = [
   ./thunar.nix
-  ./stream-deck.nix
   ./docker.nix
   ./tailscale.nix
+  ./virtualbox.nix
 ];
 
   environment.systemPackages = with pkgs; [ 

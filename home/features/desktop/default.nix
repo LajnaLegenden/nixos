@@ -10,6 +10,8 @@
     ./dunst.nix
     ./wallpaper.nix
     ./spotify.nix
+    ./clickup.nix
+    ./chrome.nix
   ];
 
   home.packages = with pkgs; [
