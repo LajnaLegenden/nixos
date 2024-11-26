@@ -59,6 +59,13 @@
              inputs.kolide-launcher.nixosModules.kolide-launcher
            ];
         };
+        nixos-gaming-laptop = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+             ./hosts/nixos-gaming-laptop
+             inputs.kolide-launcher.nixosModules.kolide-launcher
+           ];
+        };
       };
       homeConfigurations = {
         "lajna@nixos-gaming" = home-manager.lib.homeManagerConfiguration {
@@ -74,6 +81,14 @@
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
           ./home/lajna/nixos-work-laptop.nix
+             inputs.son.homeManagerModules.default
+          ];
+        };
+        "lajna@nixos-gaming-laptop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages."x86_64-linux";
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+          ./home/lajna/nixos-gaming-laptop.nix
              inputs.son.homeManagerModules.default
           ];
         };
