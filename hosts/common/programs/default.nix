@@ -19,6 +19,7 @@ imports = [
 
     networkmanager_dmenu
     networkmanagerapplet
+    power-profiles-daemon
    ];
 
   

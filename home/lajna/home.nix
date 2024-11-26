@@ -84,7 +84,15 @@
     cp -R ${../dots/ulauncher} ${config.xdg.configHome}/ulauncher
     chmod -R u+w ${config.xdg.configHome}/ulauncher
   '';
-};
+  };
+#  xdg.configFile."nvim" = {
+#    source = "${../dots/nvim}";
+#      recursive = true;
+#      onChange = ''
+#        echo "Nvim config changed, files in ~/.config/nvim:"
+#        ls -la ~/.config/nvim/
+#      ''; # Optional: helps debug if files are copied
+#};
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home

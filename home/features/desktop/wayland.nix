@@ -170,6 +170,20 @@ in {
         #custom-weather {
             margin-left: 0px;
         }
+
+        #custom-power-profile {
+            padding: 0 10px;
+            color: #ffffff;
+            border-radius: 10px;
+            background: #1e1e2e;
+            margin: 3px 0px;
+            margin-top: 10px;
+            border: 1px solid #181825;
+        }
+
+        #custom-power-profile:hover {
+            background: #313244;
+        }
       '';
       settings = {
         mainbar = {
@@ -183,7 +197,8 @@ in {
           modules-left = ["clock" "custom/weather" "pulseaudio" "battery" "hyprland/workspaces"];
           modules-center = ["hyprland/window"];
           modules-right = [
-            "tray"  
+            "tray"
+            "custom/power-profile"
           ];
           "hyprland/window" = {
             format = "{}";
@@ -228,6 +243,15 @@ in {
             format = " {:%R   %d/%m}";
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           };
+          "custom/power-profile" = {
+            exec = "~/.config/waybar/scripts/power-profiles.sh get-icon";
+            interval = 5;
+            format = "{}";
+            "on-click" = "~/.config/waybar/scripts/power-profiles.sh toggle";
+            tooltip = true;
+            "tooltip-format" = "Current profile: {}";
+            "return-type" = "json";
+          };
         };
       };
     };
@@ -248,5 +272,50 @@ in {
       ulauncher
       dunst
     ];
+
+    home.file = {
+      ".config/waybar/scripts/power-profiles.sh" = {
+        executable = true;
+        text = ''
+          #!/bin/bash
+
+          get_current_profile() {
+              powerprofilectl get
+          }
+
+          get_profile_icon() {
+              local profile=$1
+              case "$profile" in
+                  "performance") echo "󰓅" ;;
+                  "balanced") echo "󰾅" ;;
+                  "power-saver") echo "󰾆" ;;
+                  *) echo "?" ;;
+              esac
+          }
+
+          toggle_profile() {
+              local current=$(get_current_profile)
+              case "$current" in
+                  "performance") powerprofilectl set balanced ;;
+                  "balanced") powerprofilectl set power-saver ;;
+                  "power-saver") powerprofilectl set performance ;;
+              esac
+          }
+
+          case "$1" in
+              "get-icon")
+                  current=$(get_current_profile)
+                  get_profile_icon "$current"
+                  ;;
+              "toggle")
+                  toggle_profile
+                  ;;
+              *)
+                  get_current_profile
+                  ;;
+          esac
+        '';
+      };
+    };
   };
 }

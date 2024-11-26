@@ -38,11 +38,38 @@ else
     ACCENT_COLOR="rgb(100, 100, 100)"
 fi
 
-# Generate Hyprlock configuration
 cat > "$CONFIG_FILE" << EOF
+general {
+    enable_fingerprint = true
+    fingerprint_ready_message = "<i>Ready to scan fingerprint</i>"
+    fingerprint_present_message = "<i>Scanning...</i>"
+}
+
 background {
     path = $WALLPAPER
     color = $BG_COLOR
+}
+
+# Background shape for the welcome text
+shape {
+    monitor =
+    size = 500, 140
+    color = rgba(0, 0, 0, 0.5)
+    rounding = 10
+    position = 0, 80
+    halign = center
+    valign = center
+}
+
+# Background shape for the input field
+shape {
+    monitor =
+    size = 240, 70
+    color = rgba(0, 0, 0, 0.5)
+    rounding = 10
+    position = 0, -20
+    halign = center
+    valign = center
 }
 
 input-field {
@@ -62,7 +89,7 @@ input-field {
 }
 
 label {
-    text = Welcome back, \$USER
+    text = Welcome back, \$USER\n<span size="smaller">\$FPRINTMESSAGE</span>
     color = $FG_COLOR
     font_size = 25
     font_family = Sans

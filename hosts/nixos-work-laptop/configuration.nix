@@ -100,10 +100,14 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      fprintd
     ];
   };
+  services.fprintd.enable = true;
 
+services.fprintd.tod.enable = true;
+
+services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

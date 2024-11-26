@@ -7,6 +7,9 @@
     ./programs
     inputs.home-manager.nixosModules.home-manager
   ];
+  environment.systemPackages = with pkgs; [
+  hyprpolkitagent
+ ];
   home-manager = {
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs outputs;};
@@ -75,8 +78,8 @@
   security = {
     polkit.enable = true;
     pam.services.hyprlock = {};
-};
-programs.ssh = {
+  };
+  programs.ssh = {
     startAgent = true;
     # Optional: set how long keys should be remembered
     agentTimeout = "infinity"; # Or "infinity" for no timeout

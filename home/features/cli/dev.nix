@@ -17,7 +17,7 @@ with lib; let
   "$HOME/.npm-global"
 ];      # Common configurations for all machines
       home.packages = with pkgs; [
-inputs.son.packages.${pkgs.system}.default
+	neovim
         # Version Control
         git
         git-lfs
@@ -74,9 +74,20 @@ inputs.son.packages.${pkgs.system}.default
         code-cursor
         mongodb-compass
         httpie-desktop
+        delta
       ];
-      
-      programs.git.enable = true;
+  programs.git = {    
+ enable = true;
+     extraConfig = {
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only";
+      delta = {
+        navigate = true;
+        dark = true;
+      };
+      merge.conflictstyle = "zdiff3";
+    };
+    };
     }
     (mkIf cfg.isWorkMachine {
       # Work laptop specific configurations
