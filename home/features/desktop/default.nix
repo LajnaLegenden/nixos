@@ -12,10 +12,14 @@
     ./spotify.nix
     ./clickup.nix
     ./chrome.nix
+    ./obsidian.nix
+    ./kdeconnect.nix
   ];
 
   home.packages = with pkgs; [
     mullvad
     gparted
+    vlc
+    obs-studio
   ];
 }

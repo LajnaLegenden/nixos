@@ -67,6 +67,7 @@ in {
         input = {
           kb_layout = "se";
           follow_mouse = 1;
+          kb_options = meta:nocaps;
           touchpad = {
             natural_scroll = false;
           };
@@ -129,7 +130,7 @@ in {
         "$mainMod" = "SUPER";
 
         bind = [
-          "$mainMod, Q, exec, kitty"
+          "$mainMod, Q, exec, alacritty"
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
           "$mainMod, E, exec, thunar"

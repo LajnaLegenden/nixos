@@ -12,11 +12,8 @@ imports = [
     pywal
     swww
     pywalfox-native
-
     libnotify
-
     hyprlock
-
     networkmanager_dmenu
     networkmanagerapplet
     power-profiles-daemon

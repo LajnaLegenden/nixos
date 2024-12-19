@@ -48,7 +48,7 @@ with lib; let
         # Documentation
         man-pages
         gh
-        
+        tmux        
         bison
         flex
         graphviz
@@ -75,6 +75,7 @@ with lib; let
         mongodb-compass
         httpie-desktop
         delta
+        lua-language-server
       ];
   programs.git = {    
  enable = true;

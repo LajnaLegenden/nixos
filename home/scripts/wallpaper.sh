@@ -12,7 +12,7 @@ if [ ! -d "$WALLPAPERS_FOLDER" ]; then
 fi
 
 # Get a list of image files in the wallpapers folder
-wallpapers=("$WALLPAPERS_FOLDER"/*.{jpg,jpeg,png,gif})
+wallpapers=("$WALLPAPERS_FOLDER"/*.png)
 
 # Check if there are any wallpapers
 if [ ${#wallpapers[@]} -eq 0 ]; then
@@ -22,10 +22,10 @@ fi
 
 # Choose a random wallpaper
 WALLPAPER_PATH="${wallpapers[RANDOM % ${#wallpapers[@]}]}"
+cp $WALLPAPER_PATH $CURRENT_WALLPAPER
 echo "Selected wallpaper: $WALLPAPER_PATH"
 
 # Write the current wallpaper path to the file
-echo "$WALLPAPER_PATH" > "$HOME/.cache/current_wallpaper"
 echo "Updated current wallpaper file: $HOME/.cache/current_wallpaper"
 
 # Generate color scheme with pywal
@@ -39,7 +39,6 @@ pywalfox update
 
 # Generate new Hyprlock configuration
 $HOME/.config/hypr/generate_hyprlock_config.sh
-
 # Optional: Reload Hyprland config to apply any theme changes
 hyprctl reload
 

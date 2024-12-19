@@ -16,74 +16,59 @@ in {
       NIX_LOG=info
       ";
       initExtraFirst = ''
-      # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
+        # P10k instant prompt
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
 
-      # Set the directory we want to store zinit and plugins
-      ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
-      # Download Zinit, if it's not there yet
-      if [ ! -d "$ZINIT_HOME" ]; then
-        mkdir -p "$(dirname $ZINIT_HOME)"
-        git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-      fi
+        # Zinit setup
+        ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share}/zinit/zinit.git"
+        if [ ! -d "$ZINIT_HOME" ]; then
+          mkdir -p "$(dirname $ZINIT_HOME)"
+          git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+        fi
+        source "''${ZINIT_HOME}/zinit.zsh"
 
-      # Source/Load zinit
-      source "''${ZINIT_HOME}/zinit.zsh"
-    # Add in Powerlevel10k
-    zinit ice depth=1; zinit light romkatv/powerlevel10k
+        # Essential immediate-load plugins
+        zinit ice depth=1
+        zinit light romkatv/powerlevel10k
 
-    # Add in zsh plugins
-    zinit light zsh-users/zsh-syntax-highlighting
-    zinit light zsh-users/zsh-completions
-    zinit light zsh-users/zsh-autosuggestions
-    zinit light Aloxaf/fzf-tab
+        # Deferred plugins
+        zinit ice wait lucid
+        zinit light zsh-users/zsh-syntax-highlighting
 
-    # Add in snippets
-    zinit snippet OMZP::git
-    zinit snippet OMZP::sudo
-    zinit snippet OMZP::archlinux
-    zinit snippet OMZP::aws
-    zinit snippet OMZP::kubectl
-    zinit snippet OMZP::kubectx
-    zinit snippet OMZP::command-not-found
+        zinit ice wait lucid
+        zinit light zsh-users/zsh-completions
 
-    # Load completions
-    autoload -Uz compinit && compinit
+        zinit ice wait'0a' lucid
+        zinit light zsh-users/zsh-autosuggestions
 
-    zinit cdreplay -q
+        zinit ice wait lucid
+        zinit light Aloxaf/fzf-tab
 
-    # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-    [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        # Deferred snippets
+        zinit ice wait lucid
+        zinit snippet OMZL::history.zsh
 
-    # Keybindings
-    bindkey -e
-    bindkey '^p' history-search-backward
-    bindkey '^n' history-search-forward
-    bindkey '^[w' kill-region
+        for snippet in git sudo; do
+          zinit ice wait lucid
+          zinit snippet OMZP::$snippet
+        done
 
-    # History
-    HISTSIZE=5000
-    HISTFILE=~/.zsh_history
-    SAVEHIST=$HISTSIZE
-    HISTDUP=erase
-    setopt appendhistory
-    setopt sharehistory
-    setopt hist_ignore_space
-    setopt hist_ignore_all_dups
-    setopt hist_save_no_dups
-    setopt hist_ignore_dups
-    setopt hist_find_no_dups
+        zinit cdreplay -q
 
-    # Completion styling
-    zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-    zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
-    zstyle ':completion:*' menu no
-    zstyle ':fzf-tab:complete:*' fzf-preview 'ls --color $realpath'
-    zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+        # Load p10k config
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+        # Basic keybindings
+        bindkey -e
+        bindkey '^p' history-search-backward
+        bindkey '^n' history-search-forward
+        bindkey '^[w' kill-region
+
+        # Deferred completion styling
+        zinit ice wait lucid
+        zinit light %HOME/.config/zsh/completion-config
       '';
         shellAliases = {
           ".." = "cd ..";
