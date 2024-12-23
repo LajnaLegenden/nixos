@@ -6,6 +6,7 @@ imports = [
   ./docker.nix
   ./tailscale.nix
   ./virtualbox.nix
+  ./zsa.nix
 ];
 
   environment.systemPackages = with pkgs; [ 

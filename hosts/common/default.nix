@@ -9,6 +9,8 @@
   ];
   environment.systemPackages = with pkgs; [
   hyprpolkitagent
+  inputs.zen-browser.packages."${system}".specific
+
  ];
   home-manager = {
     useUserPackages = true;

@@ -22,7 +22,7 @@
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    son.url = "github:LajnaLegenden/vimmy";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";

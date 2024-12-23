@@ -111,7 +111,7 @@ services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-    hardware.opengl = {
+    hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [
       vpl-gpu-rt          # for newer GPUs on NixOS >24.05 or unstable

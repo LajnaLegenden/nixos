@@ -179,6 +179,8 @@ in {
           "$mainMod SHIFT, W, movetoworkspace, special:magic"
           "$mainMod, mouse_down, workspace, e+1"
           "$mainMod, mouse_up, workspace, e-1"
+          "$mainMod SHIFT, I, exec, ~/.config/hypr/set_random_wallpaper.sh"
+          "$mainMod SHIFT, P, exec, wlogout"
            # Media controls
           ", XF86AudioPlay, exec, playerctl play-pause"
           ", XF86AudioNext, exec, playerctl next"
