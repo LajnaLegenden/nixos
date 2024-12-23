@@ -80,8 +80,10 @@
   security = {
     polkit.enable = true;
     pam.services.hyprlock = {};
-  };
-  programs.ssh = {
+};
+# disable firewall
+networking.firewall.enable  = false;
+programs.ssh = {
     startAgent = true;
     # Optional: set how long keys should be remembered
     agentTimeout = "infinity"; # Or "infinity" for no timeout

@@ -50,6 +50,8 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
           ./hosts/nixos-gaming
+            ./hosts/nixos-gaming
+              inputs.kolide-launcher.nixosModules.kolide-launcher
           ];
         };
         nixos-work-laptop = nixpkgs.lib.nixosSystem {

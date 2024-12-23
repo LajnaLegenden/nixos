@@ -131,6 +131,11 @@
 
   
 
+  environment.etc."kolide-k2/secret" = {
+      mode = "0600";
+      text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWdvamEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MjgwMjUxMTkiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.WrePAfMFWx987FKi4rAb1lADcHYMBQkC0Hl6G2SvJ7IwvffkQxUSFCl5-cGnanVvWZStMleY-XV1IwEHEqd9sHjE_e2p2Dx9ZBxvRmWb6ywS1y5PwOv7foymJesdn8xu_jOMcT4hn-48q-HSg37TnrT3XJIDt0geIQ5bQaahSSZF9iuT1pdy8mgUDbVWDvpEZazp9icdGirJICYV6EmuaPz-mRK9JNtRzMQeTzBMLJv8LMfY5hAKQHdEeTVgHTP_nPS8ldxUuT46miXcHtucHKUyEKQlSyNDVO53WI9eDU16PysNXsMruQbXPDMG74rbVkkiSlnXynX1JvE0rlUJww";
+    };
+  services.kolide-launcher.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
