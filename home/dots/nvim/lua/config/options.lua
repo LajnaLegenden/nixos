@@ -11,6 +11,7 @@ vim.opt.backup = false       -- Disable backups as it creates "ghost" (garbage) 
 vim.o.updatetime = 300       -- Faster tick (in my case, showing the errors popup on hover faster)
 vim.o.signcolumn = "yes"     -- Always show signcolumn
 vim.o.colorcolumn = "100"     -- Show color column at 100 characters
+vim.o.scrolloff = 12
 -- Override line numbers color after colorscheme is applied
 -- NOTE: This setting only works if "termguicolors" is "true"
 vim.cmd('highlight LineNr guifg=white')

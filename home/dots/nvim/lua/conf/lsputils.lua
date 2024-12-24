@@ -65,7 +65,9 @@ function M.capabilities()
 		dynamicRegistration = false,
 		lineFoldingOnly = true,
 	}
-	return require("cmp_nvim_lsp").default_capabilities(capabilities)
+	
+	local blink_cmp = require('blink.cmp')
+	return blink_cmp.get_lsp_capabilities(capabilities)
 end
 
 function M.on_attach(on_attach)
