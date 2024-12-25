@@ -16,6 +16,12 @@ with lib; let
   "$HOME/bin"
   "$HOME/.npm-global"
 ];      # Common configurations for all machines
+
+    # Session variables
+    home.sessionVariables = {
+      NIX_PKGS_ALLOW_UNFREE=1;
+      };
+
       home.packages = with pkgs; [
 	neovim
         # Version Control
@@ -76,6 +82,8 @@ with lib; let
         httpie-desktop
         delta
         lua-language-server
+        vscode-langservers-extracted
+        emmet-language-server
       ];
   programs.git = {    
  enable = true;

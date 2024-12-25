@@ -1,29 +1,19 @@
 require("fzf-lua").setup({
-	"telescope",
+	"borderless",
 	fzf_opts = { ["-i"] = "" },
 })
 
 -- LSP
 local lspconfig = require("lspconfig")
 local eslint = require("eslint")
-lspconfig.lua_ls.setup({})
-eslint.setup({
-	bin = "eslint_d", -- or `eslint_d`
-	code_actions = {
-		enable = true,
-		apply_on_save = {
-			enable = true,
-			types = { "directive", "problem", "suggestion", "layout" },
-		},
-	},
-	diagnostics = {
-		enable = true,
-		report_unused_disable_directives = false,
-		run_on = "type", -- or `save`
-	},
-})
-
--- Define on_attach before using it
+local servers = {
+	"lua_ls",
+	"nil_ls",
+	"eslint",
+	"html",
+	"jsonls",
+	"cssls",
+}
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -47,13 +37,45 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "<leader>cl", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
 	buf_set_keymap("n", "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 end
+-- Setup servers with capabilities and on_attach
+for _, lsp in ipairs(servers) do
+	lspconfig[lsp].setup({
+		capabilities = require("conf.lsputils").capabilities(),
+		on_attach = require("conf.lsputils").on_attach(on_attach),
+	})
+end
+lspconfig.emmet_language_server.setup({
+	filetypes = {
+		"css",
+		"eruby",
+		"html",
+		"javascript",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"pug",
+		"typescriptreact",
+	},
+	-- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
+	-- **Note:** only the options listed in the table are supported.
+	init_options = {
+		---@type table<string, string>
+		includeLanguages = {},
+		--- @type string[]
+		excludeLanguages = {},
+		--- @type string[]
+		extensionsPath = {},
+		--- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
+	},
+})
 
 require("gitsigns").setup({
 	current_line_blame = true,
 	current_line_blame_opts = {
 		virt_text = true,
 		virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-		delay = 250,
+		delay = 10,
 		ignore_whitespace = false,
 		virt_text_priority = 100,
 		use_focus = true,
@@ -66,15 +88,3 @@ require("onedarkpro").setup({
 	},
 })
 vim.cmd("colorscheme onedark")
-local servers = {
-	"lua_ls",
-	"nil_ls",
-}
--- Setup servers with capabilities and on_attach
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		capabilities = require("conf.lsputils").capabilities(),
-		on_attach = require("conf.lsputils").on_attach(on_attach),
-	})
-end
-
