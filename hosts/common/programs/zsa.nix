@@ -1,9 +1,13 @@
-
-{ pkgs, config, libs, ... }:
+{
+  pkgs,
+  config,
+  libs,
+  ...
+}:
 
 {
-     environment.systemPackages = with pkgs; [
-  zsa-udev-rules
-  keymapp
-];
+  environment.systemPackages = with pkgs; [
+    zsa-udev-rules
+    keymapp
+  ];
 }

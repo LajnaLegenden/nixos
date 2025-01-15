@@ -2,13 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -41,10 +46,13 @@
     LC_TELEPHONE = "sv_SE.UTF-8";
     LC_TIME = "sv_SE.UTF-8";
   };
-  nix.settings.trusted-users = ["root" "lajna"];
+  nix.settings.trusted-users = [
+    "root"
+    "lajna"
+  ];
   nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -88,7 +96,7 @@
   # services.xserver.libinput.enable = true;
 
   # Install firefox.
- # programs.firefox.enable = true;
+  # programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -96,18 +104,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  git
-  neovim
-  cmake
-  cpio
-  meson
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
+    git
+    neovim
+    cmake
+    cpio
+    meson
   ];
-
-
-  
-  
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -126,15 +130,14 @@
     enable = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  
-
   environment.etc."kolide-k2/secret" = {
-      mode = "0600";
-      text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWdvamEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MjgwMjUxMTkiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.WrePAfMFWx987FKi4rAb1lADcHYMBQkC0Hl6G2SvJ7IwvffkQxUSFCl5-cGnanVvWZStMleY-XV1IwEHEqd9sHjE_e2p2Dx9ZBxvRmWb6ywS1y5PwOv7foymJesdn8xu_jOMcT4hn-48q-HSg37TnrT3XJIDt0geIQ5bQaahSSZF9iuT1pdy8mgUDbVWDvpEZazp9icdGirJICYV6EmuaPz-mRK9JNtRzMQeTzBMLJv8LMfY5hAKQHdEeTVgHTP_nPS8ldxUuT46miXcHtucHKUyEKQlSyNDVO53WI9eDU16PysNXsMruQbXPDMG74rbVkkiSlnXynX1JvE0rlUJww";
-    };
+    mode = "0600";
+    text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWdvamEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MjgwMjUxMTkiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.WrePAfMFWx987FKi4rAb1lADcHYMBQkC0Hl6G2SvJ7IwvffkQxUSFCl5-cGnanVvWZStMleY-XV1IwEHEqd9sHjE_e2p2Dx9ZBxvRmWb6ywS1y5PwOv7foymJesdn8xu_jOMcT4hn-48q-HSg37TnrT3XJIDt0geIQ5bQaahSSZF9iuT1pdy8mgUDbVWDvpEZazp9icdGirJICYV6EmuaPz-mRK9JNtRzMQeTzBMLJv8LMfY5hAKQHdEeTVgHTP_nPS8ldxUuT46miXcHtucHKUyEKQlSyNDVO53WI9eDU16PysNXsMruQbXPDMG74rbVkkiSlnXynX1JvE0rlUJww";
+  };
   services.kolide-launcher.enable = true;
 
   # Open ports in the firewall.

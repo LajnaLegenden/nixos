@@ -1,41 +1,43 @@
-{ config, ... }: { 
-    imports = [ 
-      ./home.nix
-    ../common 
+{ config, ... }:
+{
+  imports = [
+    ./home.nix
+    ../common
     ../features/cli
     ../features/desktop
   ];
- 
- features = {
-  cli = {
-    zsh.enable = true;
-    fzf.enable = true;
-    neofetch.enable = true;
-    dev = {
-      enable = true;
-      isWorkMachine = false;  # Set to false for personal machines
-    };
-  };
 
-  desktop = {
-    wayland.enable = true;
-    hyprland.enable = true;
-    fonts.enable = true;
-    firefox.enable =true;
-    vesktop.enable = true;
-    wallpaper.enable = true;
+  features = {
+    cli = {
+      zsh.enable = true;
+      fzf.enable = true;
+      neofetch.enable = true;
+      tmux.enable = true;
+      dev = {
+        enable = true;
+        isWorkMachine = false; # Set to false for personal machines
+      };
+    };
+
+    desktop = {
+      wayland.enable = true;
+      hyprland.enable = true;
+      fonts.enable = true;
+      firefox.enable = true;
+      vesktop.enable = true;
+      wallpaper.enable = true;
       chrome.enable = true;
-        spotify.enable = true;
+      spotify.enable = true;
 
-    dunst = {
-      enable = false;
-      colorFile = "$HOME/.cache/wal/colors.sh";
-      # You can add more custom settings here if needed
+      dunst = {
+        enable = false;
+        colorFile = "$HOME/.cache/wal/colors.sh";
+        # You can add more custom settings here if needed
+      };
     };
   };
- };
- 
-    wayland.windowManager.hyprland = {
+
+  wayland.windowManager.hyprland = {
     settings = {
       monitor = [
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@165,0x0,1"
@@ -57,5 +59,4 @@
     };
   };
 
-
-  }
+}

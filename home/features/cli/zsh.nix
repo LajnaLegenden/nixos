@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.cli.zsh;
-in {
+in
+{
   options.features.cli.zsh.enable = mkEnableOption "enable extended zsh configuration";
 
   config = mkIf cfg.enable {
@@ -70,17 +72,25 @@ in {
         zinit ice wait lucid
         zinit light %HOME/.config/zsh/completion-config
       '';
-        shellAliases = {
-          ".." = "cd ..";
-          "..." = "cd ../..";
-          ls = "eza";
-          grep = "rg";
-          ps = "procs";
-          yui = "yarn upgrade-interactive --latest && yarn-dedupe && yarn";
-          cd = "z";
-          cat = "bat";
-          rebuildSystem = "sudo nixos-rebuild switch --flake /home/lajna/nixConfig/";
-        };
+      shellAliases = {
+        ".." = "cd ..";
+        "..." = "cd ../..";
+        ls = "eza";
+        grep = "rg";
+        ps = "procs";
+        yui = "yarn upgrade-interactive --latest && yarn-dedupe && yarn";
+        cd = "z";
+        cat = "bat";
+        rebuildSystem = "sudo nixos-rebuild switch --flake /home/lajna/nixConfig/";
+        gcam = "git commit --amend --no-edit";
+        gitClean = "git pull -p && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D && git branch | wc -l";
+        ":q" = "echo 'ARE YOU STOOOPID, THIS IS NOT A FILE'";
+        ":wq" = "echo 'ARE YOU STOOOPID, THIS IS NOT A FILE, WHAT ARE YOU SAVING?'";
+        grm = "git fetch origin && git rebase origin/master";
+        vim = "nvim";
+        vi = "nvim";
+        v = "nvim";
+      };
     };
   };
 }

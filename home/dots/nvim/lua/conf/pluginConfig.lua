@@ -5,7 +5,6 @@ require("fzf-lua").setup({
 
 -- LSP
 local lspconfig = require("lspconfig")
-local eslint = require("eslint")
 local servers = {
 	"lua_ls",
 	"nil_ls",
@@ -13,6 +12,7 @@ local servers = {
 	"html",
 	"jsonls",
 	"cssls",
+	"gopls",
 }
 local on_attach = function(client, bufnr)
 	local function buf_set_keymap(...)
@@ -41,7 +41,7 @@ end
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
 		capabilities = require("conf.lsputils").capabilities(),
-		on_attach = require("conf.lsputils").on_attach(on_attach),
+		on_attach = on_attach,
 	})
 end
 lspconfig.emmet_language_server.setup({

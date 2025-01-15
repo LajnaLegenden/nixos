@@ -2,13 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs,... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -65,11 +70,11 @@
   services.printing.enable = true;
   #Eanble kolide
   environment.etc."kolide-k2/secret" = {
-      mode = "0600";
-      text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWdvamEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MjgwMjUxMTkiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.WrePAfMFWx987FKi4rAb1lADcHYMBQkC0Hl6G2SvJ7IwvffkQxUSFCl5-cGnanVvWZStMleY-XV1IwEHEqd9sHjE_e2p2Dx9ZBxvRmWb6ywS1y5PwOv7foymJesdn8xu_jOMcT4hn-48q-HSg37TnrT3XJIDt0geIQ5bQaahSSZF9iuT1pdy8mgUDbVWDvpEZazp9icdGirJICYV6EmuaPz-mRK9JNtRzMQeTzBMLJv8LMfY5hAKQHdEeTVgHTP_nPS8ldxUuT46miXcHtucHKUyEKQlSyNDVO53WI9eDU16PysNXsMruQbXPDMG74rbVkkiSlnXynX1JvE0rlUJww";
-    };
+    mode = "0600";
+    text = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvcmdhbml6YXRpb24iOiJuYWdvamEiLCJraWQiOiJiODoxZDowNjo5NzpjYjo3OTpjMDo3MTpjNDoxNTpjZDo5Yzo4Mjo0MDo4NjpjYSIsImNyZWF0ZWRBdCI6IjE3MjgwMjUxMTkiLCJjcmVhdGVkQnkiOiJrd29ya2VyIn0.WrePAfMFWx987FKi4rAb1lADcHYMBQkC0Hl6G2SvJ7IwvffkQxUSFCl5-cGnanVvWZStMleY-XV1IwEHEqd9sHjE_e2p2Dx9ZBxvRmWb6ywS1y5PwOv7foymJesdn8xu_jOMcT4hn-48q-HSg37TnrT3XJIDt0geIQ5bQaahSSZF9iuT1pdy8mgUDbVWDvpEZazp9icdGirJICYV6EmuaPz-mRK9JNtRzMQeTzBMLJv8LMfY5hAKQHdEeTVgHTP_nPS8ldxUuT46miXcHtucHKUyEKQlSyNDVO53WI9eDU16PysNXsMruQbXPDMG74rbVkkiSlnXynX1JvE0rlUJww";
+  };
   services.kolide-launcher.enable = true;
-    
+
   #Enable bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
@@ -97,7 +102,10 @@
   users.users.lajna = {
     isNormalUser = true;
     description = "Linus";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       kdePackages.kate
       fprintd
@@ -105,13 +113,13 @@
   };
   services.fprintd.enable = true;
 
-services.fprintd.tod.enable = true;
+  services.fprintd.tod.enable = true;
 
-services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-    hardware.opengl = {
+  hardware.opengl = {
     enable = true;
   };
 
@@ -121,7 +129,8 @@ services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
     enable = true;
     xwayland.enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Some programs need SUID wrappers, can be configured further or are

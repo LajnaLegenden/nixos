@@ -5,18 +5,20 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.hyprland;
-in {
+in
+{
   options.features.desktop.hyprland.enable = mkEnableOption "hyprland config";
 
   config = mkIf cfg.enable {
     home.file = {
-    ".config/hypr/generate_hyprlock_config.sh" = {
-      source = ../../scripts/hyprlock.sh;  # Path to your script file
-      executable = true;
+      ".config/hypr/generate_hyprlock_config.sh" = {
+        source = ../../scripts/hyprlock.sh; # Path to your script file
+        executable = true;
+      };
     };
-  };
     wayland.windowManager.hyprland = {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -25,21 +27,21 @@ in {
       ];
 
       settings = {
-        
+
         cursor = {
           no_hardware_cursors = true;
         };
 
-        plugin =  {
-          csgo-vulkan-fix =  {
-              res_w = 2560;
-              res_h = 1440;
+        plugin = {
+          csgo-vulkan-fix = {
+            res_w = 2560;
+            res_h = 1440;
 
-              # NOT a regex! This is a string and has to exactly match initial_class
-              class = "cs2";
+            # NOT a regex! This is a string and has to exactly match initial_class
+            class = "cs2";
 
-              # Whether to fix the mouse position. A select few apps might be wonky with this.
-              fix_mouse = true;
+            # Whether to fix the mouse position. A select few apps might be wonky with this.
+            fix_mouse = true;
           };
         };
 
@@ -67,7 +69,7 @@ in {
         input = {
           kb_layout = "se";
           follow_mouse = 1;
-          kb_options = meta:nocaps;
+          kb_options = "meta:nocaps";
           touchpad = {
             natural_scroll = false;
           };
@@ -119,11 +121,11 @@ in {
           force_default_wallpaper = -1;
         };
 
-         "windowrule" = [
-        "opacity 1.0 1.0,class:.*"
-        "opacity 0.8 0.8,class:.*,floating:0,fullscreen:0"
-        "opacity 1.0 0.7,class:^(kitty)$"
-      ];
+        "windowrule" = [
+          "opacity 1.0 1.0,class:.*"
+          "opacity 0.8 0.8,class:.*,floating:0,fullscreen:0"
+          "opacity 1.0 0.7,class:^(kitty)$"
+        ];
 
         windowrulev2 = "suppressevent maximize, class:.*";
 
@@ -150,7 +152,7 @@ in {
           "$mainMod, J, movefocus, d"
           "$mainMod SHIFT, S, exec, grim -g \"$(slurp)\" - | wl-copy"
           "$mainMod, N, exec, swaync-client -t -sw"
-            # Resize windows
+          # Resize windows
           "$mainMod ALT, left, resizeactive, -40 0"
           "$mainMod ALT, right, resizeactive, 40 0"
           "$mainMod ALT, up, resizeactive, 0 -40"
@@ -181,19 +183,19 @@ in {
           "$mainMod, mouse_up, workspace, e-1"
           "$mainMod SHIFT, I, exec, ~/.config/hypr/set_random_wallpaper.sh"
           "$mainMod SHIFT, P, exec, wlogout"
-           # Media controls
+          # Media controls
           ", XF86AudioPlay, exec, playerctl play-pause"
           ", XF86AudioNext, exec, playerctl next"
           ", XF86AudioPrev, exec, playerctl previous"
-          
+
           ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5% && ~/.sh/volume.sh"
           ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5% && ~/.sh/volume.sh"
           ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle && ~/.sh/volume.sh"
 
-    # Brightness control
+          # Brightness control
           ", XF86MonBrightnessUp, exec, brightnessctl set +5% && ~/.sh/brightness.sh"
           ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && ~/.sh/brightness.sh"
- 
+
         ];
 
         binde = [
@@ -202,54 +204,54 @@ in {
           "$mainMod ALT, up, resizeactive, 0 -40"
           "$mainMod ALT, down, resizeactive, 0 40"
         ];
-        
-workspace = [
-      "w[t1], gapsout:0, gapsin:0, border:0, rounding:0"
-      "w[tg1], gapsout:0, gapsin:0, border:0, rounding:0"
-    ];
+
+        workspace = [
+          "w[t1], gapsout:0, gapsin:0, border:0, rounding:0"
+          "w[tg1], gapsout:0, gapsin:0, border:0, rounding:0"
+        ];
         bindm = [
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
         ];
       };
     };
- home.packages = with pkgs; [
-    swaynotificationcenter
-    brightnessctl
-  ];
+    home.packages = with pkgs; [
+      swaynotificationcenter
+      brightnessctl
+    ];
     services.hypridle = {
       enable = true;
       settings = {
         general = {
-            lockCmd = "pidof hyprlock || hyprlock";
-    beforeSleepCmd = "loginctl lock-session";
-    afterSleepCmd = "hyprctl dispatch dpms on";
-          };
-         listeners = [
-      {
-        timeout = 150;
-        onTimeout = "brightnessctl -s set 10";
-        onResume = "brightnessctl -r";
-      }
-      {
-        timeout = 150;
-        onTimeout = "brightnessctl -sd rgb:kbd_backlight set 0";
-        onResume = "brightnessctl -rd rgb:kbd_backlight";
-      }
-      {
-        timeout = 300;
-        onTimeout = "loginctl lock-session";
-      }
-      {
-        timeout = 380;
-        onTimeout = "hyprctl dispatch dpms off";
-        onResume = "hyprctl dispatch dpms on";
-      }
-      {
-        timeout = 1800;
-        onTimeout = "systemctl suspend";
-      }
-    ];
+          lockCmd = "pidof hyprlock || hyprlock";
+          beforeSleepCmd = "loginctl lock-session";
+          afterSleepCmd = "hyprctl dispatch dpms on";
+        };
+        listeners = [
+          {
+            timeout = 150;
+            onTimeout = "brightnessctl -s set 10";
+            onResume = "brightnessctl -r";
+          }
+          {
+            timeout = 150;
+            onTimeout = "brightnessctl -sd rgb:kbd_backlight set 0";
+            onResume = "brightnessctl -rd rgb:kbd_backlight";
+          }
+          {
+            timeout = 300;
+            onTimeout = "loginctl lock-session";
+          }
+          {
+            timeout = 380;
+            onTimeout = "hyprctl dispatch dpms off";
+            onResume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1800;
+            onTimeout = "systemctl suspend";
+          }
+        ];
       };
     };
   };

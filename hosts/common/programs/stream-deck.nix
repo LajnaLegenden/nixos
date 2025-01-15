@@ -1,7 +1,12 @@
-{ pkgs, config, libs, ... }:
+{
+  pkgs,
+  config,
+  libs,
+  ...
+}:
 
 {
- programs.streamdeck-ui = {
+  programs.streamdeck-ui = {
     enable = true;
     autoStart = true; # optional
   };

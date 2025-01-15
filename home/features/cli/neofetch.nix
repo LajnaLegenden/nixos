@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.cli.neofetch;
-in {
+in
+{
   options.features.cli.neofetch.enable = mkEnableOption "enable neofetch";
 
   config = mkIf cfg.enable {

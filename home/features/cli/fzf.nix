@@ -3,14 +3,16 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.cli.fzf;
-in {
+in
+{
   options.features.cli.fzf.enable = mkEnableOption "enable extended fzf configuration";
 
   config = mkIf cfg.enable {
     programs.fzf = {
-      enable = true; 
+      enable = true;
       enableZshIntegration = true;
       colors = {
         "fg" = "#f8f8f2";

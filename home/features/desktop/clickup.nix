@@ -4,15 +4,16 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.clickup;
-in {
-  options.features.desktop.clickup.enable =
-    mkEnableOption "install clickup";
+in
+{
+  options.features.desktop.clickup.enable = mkEnableOption "install clickup";
 
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
-     clickup
+      clickup
     ];
   };
 }

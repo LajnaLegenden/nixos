@@ -1,3 +1,3 @@
 {
-  imports = [./lajna.nix];
+  imports = [ ./lajna.nix ];
 }

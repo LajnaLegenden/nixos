@@ -1,15 +1,20 @@
-{ pkgs, config, libs, ... }:
+{
+  pkgs,
+  config,
+  libs,
+  ...
+}:
 
 {
-imports = [
-  ./thunar.nix
-  ./docker.nix
-  ./tailscale.nix
-  ./virtualbox.nix
-  ./zsa.nix
-];
+  imports = [
+    ./thunar.nix
+    ./docker.nix
+    ./tailscale.nix
+    ./virtualbox.nix
+    ./zsa.nix
+  ];
 
-  environment.systemPackages = with pkgs; [ 
+  environment.systemPackages = with pkgs; [
     pywal
     swww
     pywalfox-native
@@ -18,8 +23,6 @@ imports = [
     networkmanager_dmenu
     networkmanagerapplet
     power-profiles-daemon
-   ];
-
-  
+  ];
 
 }

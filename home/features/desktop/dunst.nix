@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 with lib;
 
@@ -23,7 +28,7 @@ in
 
     settings = mkOption {
       type = types.attrs;
-      default = {};
+      default = { };
       description = "Additional settings for Dunst configuration.";
     };
   };

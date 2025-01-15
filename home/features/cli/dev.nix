@@ -1,7 +1,15 @@
-{ config, lib, pkgs, inputs, ... }:
-with lib; let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+with lib;
+let
   cfg = config.features.cli.dev;
- in {
+in
+{
   options.features.cli.dev = {
     enable = mkEnableOption "enable extended dev configuration";
     isWorkMachine = mkOption {
@@ -12,18 +20,18 @@ with lib; let
   };
   config = mkIf cfg.enable (mkMerge [
     {
-     home.sessionPath = [ 
-  "$HOME/bin"
-  "$HOME/.npm-global"
-];      # Common configurations for all machines
+      home.sessionPath = [
+        "$HOME/bin"
+        "$HOME/.npm-global"
+      ]; # Common configurations for all machines
 
-    # Session variables
-    home.sessionVariables = {
-      NIX_PKGS_ALLOW_UNFREE=1;
+      # Session variables
+      home.sessionVariables = {
+        NIX_PKGS_ALLOW_UNFREE = 1;
       };
 
       home.packages = with pkgs; [
-	neovim
+        neovim
         # Version Control
         git
         git-lfs
@@ -54,7 +62,7 @@ with lib; let
         # Documentation
         man-pages
         gh
-        tmux        
+        tmux
         bison
         flex
         graphviz
@@ -70,7 +78,7 @@ with lib; let
         tree-sitter
         nil
         zeal
-        gitkraken      
+        gitkraken
         clang-tools
         clangStdenv
         jetbrains.clion
@@ -84,19 +92,22 @@ with lib; let
         lua-language-server
         vscode-langservers-extracted
         emmet-language-server
+
+        go
+        gopls
       ];
-  programs.git = {    
- enable = true;
-     extraConfig = {
-      core.pager = "delta";
-      interactive.diffFilter = "delta --color-only";
-      delta = {
-        navigate = true;
-        dark = true;
+      programs.git = {
+        enable = true;
+        extraConfig = {
+          core.pager = "delta";
+          interactive.diffFilter = "delta --color-only";
+          delta = {
+            navigate = true;
+            dark = true;
+          };
+          merge.conflictstyle = "zdiff3";
+        };
       };
-      merge.conflictstyle = "zdiff3";
-    };
-    };
     }
     (mkIf cfg.isWorkMachine {
       # Work laptop specific configurations

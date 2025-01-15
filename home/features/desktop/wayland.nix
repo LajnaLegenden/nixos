@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.features.desktop.wayland;
-in {
+in
+{
   options.features.desktop.wayland.enable = mkEnableOption "wayland extra tools and config";
 
   config = mkIf cfg.enable {
@@ -194,8 +196,14 @@ in {
           passthrough = false;
           gtk-layer-shell = true;
           height = 0;
-          modules-left = ["clock" "custom/weather" "pulseaudio" "battery" "hyprland/workspaces"];
-          modules-center = ["hyprland/window"];
+          modules-left = [
+            "clock"
+            "custom/weather"
+            "pulseaudio"
+            "battery"
+            "hyprland/workspaces"
+          ];
+          modules-center = [ "hyprland/window" ];
           modules-right = [
             "tray"
             "custom/power-profile"
@@ -205,29 +213,29 @@ in {
             seperate-outputs = true;
           };
           "hyprland/workspaces" = {
-          disable-scroll = true;
-          all-outputs = false;
-          current-only = true;
-          on-click = "activate";
-          format = " {name} {icon} ";
-          on-scroll-up = "hyprctl dispatch workspace e+1";
-          on-scroll-down = "hyprctl dispatch workspace e-1";
-          format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "";
-            "4" = "";
-            "5" = "";
-            "6" = "";
-            "7" = "";
+            disable-scroll = true;
+            all-outputs = false;
+            current-only = true;
+            on-click = "activate";
+            format = " {name} {icon} ";
+            on-scroll-up = "hyprctl dispatch workspace e+1";
+            on-scroll-down = "hyprctl dispatch workspace e-1";
+            format-icons = {
+              "1" = "";
+              "2" = "";
+              "3" = "";
+              "4" = "";
+              "5" = "";
+              "6" = "";
+              "7" = "";
+            };
+            persistent_workspaces = {
+              "1" = [ ];
+              "2" = [ ];
+              "3" = [ ];
+              "4" = [ ];
+            };
           };
-          persistent_workspaces = {
-            "1" = [];
-            "2" = [];
-            "3" = [];
-            "4" = [];
-          };
-        };
           "custom/weather" = {
             format = "{}°C";
             tooltip = true;

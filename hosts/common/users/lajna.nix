@@ -3,7 +3,8 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   users.users.lajna = {
     initialHashedPassword = "$y$j9T$qeHII9xOEYpec3fzFPbjP0$49EmQlnZBVIgvm6rN4ha7f/l7qB.OtfU1wHuE4C7if2";
     isNormalUser = true;
@@ -20,8 +21,7 @@
       "kvm"
       "qemu-libvirtd"
     ];
-    packages = [inputs.home-manager.packages.${pkgs.system}.default];
+    packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
   };
-  home-manager.users.lajna =
-    import ../../../home/lajna/${config.networking.hostName}.nix;
+  home-manager.users.lajna = import ../../../home/lajna/${config.networking.hostName}.nix;
 }
