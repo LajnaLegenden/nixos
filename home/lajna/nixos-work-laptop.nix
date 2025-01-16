@@ -44,10 +44,9 @@
   wayland.windowManager.hyprland = {
 
     extraConfig = ''
-
-      windowrulev2 = workspace 9 silent,class:^(Slack)$
-           windowrulev2 = workspace 10 silent,class:^(thunderbird)$
-    '';
+ windowrulev2 = workspace 9 silent,class:^(Slack)$
+      windowrulev2 = workspace 10 silent,class:^(thunderbird)$
+      '';
     settings = {
       exec-once = [
         "blueman-applet"
@@ -58,12 +57,13 @@
         disable_logs = false;
       };
       monitor = [
-        "desc:California Institute of Technology 0x1404,1920x1200@60,3840x1200,1"
+        "desc:California Institute of Technology 0x1404,1920x1200@60,2560x800,1"
         "desc:AOC AG271QG 0x01010101,2560x1440@60,-2560x0,1"
         "desc:Agilent Technologies 1080p60     0x00000001,1920x1080@60,-1920x0,1"
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@75,0x0,1"
         "desc:Hewlett Packard HP LE2202x CNT229P1PZ,1920x1080@60,760x-1080,1"
         "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,-1080x180,1,transform,3"
+        "desc:Dell Inc. DELL S2722QC CQ7JMD3,3840x2160@60,0x0,1.5"
       ];
       workspace = [
         "1, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3, default:true"

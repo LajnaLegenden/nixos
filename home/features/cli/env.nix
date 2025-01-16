@@ -13,6 +13,10 @@ in
   config = mkIf cfg.enable {
     home.file.".npm-global".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.npm-global";
+  
+  home.sessionPath = [
+    "$HOME/.npm-global/bin"
+  ];
 
     home.sessionPath = [
       "$HOME/.npm-global/bin"

@@ -40,6 +40,12 @@
 
   wayland.windowManager.hyprland = {
     settings = {
+      env = [
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "GBM_BACKEND,nvidia-drm"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+      ];
       monitor = [
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@165,0x0,1"
         "desc:LG Electronics LG ULTRAGEAR 009NTUW40494,2560x1440@143.97,3440x0,1"

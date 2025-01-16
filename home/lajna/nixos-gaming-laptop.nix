@@ -47,14 +47,17 @@
            windowrulev2 = workspace 10 silent,class:^(thunderbird)$
     '';
     settings = {
-      exec-once = [
-        "blueman-applet"
-        "thunderbird"
-        "slack"
+       exec-once = [
+          "blueman-applet"
+          "thunderbird"
+          "slack"
+        ];
+      env = [
+          "WLR_NO_HARDWARE_CURSORS,1"
+          "GBM_BACKEND,nvidia-drm"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
       ];
-      debug = {
-        disable_logs = false;
-      };
       monitor = [
         "desc:Dell Inc. DELL S2722QC CQ7JMD3,3840x2160@60,0x0,1.5"
         "desc:California Institute of Technology 0x1404,1920x1200@60,3840x1200,1"

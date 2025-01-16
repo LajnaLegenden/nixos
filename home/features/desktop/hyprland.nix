@@ -57,13 +57,9 @@ in
 
         env = [
           "XCURSOR_SIZE,32"
-          "WLR_NO_HARDWARE_CURSORS,1"
           "GTK_THEME,Dracula"
           "AQ_DRM_DEVICES,/dev/dri/card1:/dev/dri/card2"
-          "LIBVA_DRIVER_NAME,nvidia"
           "XDG_SESSION_TYPE,wayland"
-          "GBM_BACKEND,nvidia-drm"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
 ];
         input = {
