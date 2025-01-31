@@ -14,10 +14,6 @@ in
     home.file.".npm-global".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.npm-global";
   
-  home.sessionPath = [
-    "$HOME/.npm-global/bin"
-  ];
-
     home.sessionPath = [
       "$HOME/.npm-global/bin"
     ];
@@ -25,6 +21,7 @@ in
     home.sessionVariables = {
       NPM_CONFIG_PREFIX = "$HOME/.npm-global";
       SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
+      NX_DAEMON = "false";
     };
 
 

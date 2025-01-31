@@ -75,7 +75,6 @@ in
         luarocks
         python3
         python3Packages.pip
-        tree-sitter
         nil
         zeal
         gitkraken
@@ -109,6 +108,7 @@ in
         };
       };
     }
+
     (mkIf cfg.isWorkMachine {
       # Work laptop specific configurations
       programs.git = {
@@ -119,6 +119,7 @@ in
         };
       };
     })
+
     (mkIf (!cfg.isWorkMachine) {
       # Default configurations for other machines
       programs.git = {

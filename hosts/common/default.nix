@@ -15,6 +15,7 @@
   ];
   environment.systemPackages = with pkgs; [
     hyprpolkitagent
+    seahorse
     inputs.zen-browser.packages."${system}".specific
     inputs.ghostty.packages.x86_64-linux.default
 

@@ -81,7 +81,7 @@ require("gitsigns").setup({
 		use_focus = true,
 	},
 })
-
+require("mini.ai").setup()
 require("lualine").setup()
 require("onedarkpro").setup({
 	options = {

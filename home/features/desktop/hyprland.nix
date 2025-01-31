@@ -47,6 +47,7 @@ in
 
         exec-once = [
           "waybar"
+          "kdeconnect-indicator"
           "hyprctl dispatch workspace 1"
           "nm-applet"
           "ulauncher --hide-window"

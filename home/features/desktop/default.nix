@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./kde-connect.nix
     ./wayland.nix
     ./hyprland.nix
     ./fonts.nix
