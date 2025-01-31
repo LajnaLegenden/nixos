@@ -52,6 +52,7 @@ in
           "ulauncher --hide-window"
           "swww-daemon"
           ".config/hypr/set_random_wallpaper.sh"
+          "eval $(ssh-agent)"
         ];
 
         env = [
@@ -64,8 +65,7 @@ in
           "GBM_BACKEND,nvidia-drm"
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
-        ];
-
+];
         input = {
           kb_layout = "se";
           follow_mouse = 1;

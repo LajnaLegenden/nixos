@@ -31,7 +31,8 @@ set_keymap("n", "<leader><leader>", ":FzfLua files<CR>", "find-it-faster.findFil
 set_keymap("n", "<C-p>", ":FzfLua buffers<CR>", "workbench.action.showAllEditors")
 
 -- File explorer
-set_keymap("n", "<leader>e", ":Neotree toggle<CR>", "workbench.action.toggleSidebarVisibility")
+set_keymap("n", "<leader>ee", ":Neotree toggle<CR>", "workbench.action.toggleSidebarVisibility")
+set_keymap("n", "<leader>er", ":Neotree reveal<CR>", "workbench.action.toggleSidebarVisibility")
 
 -- Line movement (VSCode has built-in commands for these)
 set_keymap("n", "-", ":normal ddp<CR>", "editor.action.moveLinesDownAction")

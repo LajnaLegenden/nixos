@@ -28,6 +28,7 @@
       wallpaper.enable = true;
       chrome.enable = true;
       spotify.enable = true;
+      theme.enable = true;
 
       dunst = {
         enable = false;

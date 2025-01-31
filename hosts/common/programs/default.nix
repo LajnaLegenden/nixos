@@ -12,6 +12,7 @@
     ./tailscale.nix
     ./virtualbox.nix
     ./zsa.nix
+    ./lmstudio.nix
   ];
 
   environment.systemPackages = with pkgs; [

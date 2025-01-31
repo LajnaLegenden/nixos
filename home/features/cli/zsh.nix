@@ -30,7 +30,6 @@ in
           git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
         fi
         source "''${ZINIT_HOME}/zinit.zsh"
-
         # Essential immediate-load plugins
         zinit ice depth=1
         zinit light romkatv/powerlevel10k

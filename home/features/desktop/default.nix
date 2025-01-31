@@ -15,6 +15,7 @@
     ./chrome.nix
     ./obsidian.nix
     ./kdeconnect.nix
+    ./theme.nix
   ];
 
   home.packages = with pkgs; [

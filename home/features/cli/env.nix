@@ -20,7 +20,10 @@ in
 
     home.sessionVariables = {
       NPM_CONFIG_PREFIX = "$HOME/.npm-global";
+      SSH_AUTH_SOCK = "$XDG_RUNTIME_DIR/ssh-agent";
     };
+
+
 
     # Optionally, create the directory if it doesn't exist
     home.activation.createNpmGlobal = config.lib.dag.entryAfter [ "writeBoundary" ] ''
