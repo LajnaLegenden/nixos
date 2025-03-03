@@ -84,6 +84,10 @@
       executable = true;
       source = "${../scripts/volume.sh}";
     };
+    ".sh/restartAll.sh" = {
+      executable = true;
+      source = "${../scripts/restartAll.sh}";
+    };
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose

@@ -93,9 +93,8 @@ in
         #tray,
         #backlight {
             background: #1e1e2e;
-            padding: 0px 10px;
             margin: 3px 0px;
-            margin-top: 10px;
+            padding: 0 10px;
             border: 1px solid #181825;
         }
 
@@ -228,12 +227,21 @@ in
               "5" = "";
               "6" = "";
               "7" = "";
+              "8" = "";
+              "9" = "";
+              "10" = "";
             };
             persistent_workspaces = {
               "1" = [ ];
               "2" = [ ];
               "3" = [ ];
               "4" = [ ];
+              "5" = [ ];
+              "6" = [ ];
+              "7" = [ ];
+              "8" = [ ];
+              "9" = [ ];
+              "10" = [ ];
             };
           };
           "custom/weather" = {
@@ -252,10 +260,10 @@ in
             tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           };
           "custom/power-profile" = {
-            exec = "~/.config/waybar/scripts/power-profiles.sh get-icon";
+            exec = "~/.sh/waybar/scripts/power-profiles.sh get-icon";
             interval = 5;
             format = "{}";
-            "on-click" = "~/.config/waybar/scripts/power-profiles.sh toggle";
+            "on-click" = "~/.sh/waybar/scripts/power-profiles.sh toggle";
             tooltip = true;
             "tooltip-format" = "Current profile: {}";
             "return-type" = "json";
@@ -282,7 +290,7 @@ in
     ];
 
     home.file = {
-      ".config/waybar/scripts/power-profiles.sh" = {
+      ".sh/waybar/scripts/power-profiles.sh" = {
         executable = true;
         text = ''
           #!/bin/bash

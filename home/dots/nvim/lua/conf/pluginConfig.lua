@@ -31,6 +31,8 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	buf_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 	buf_set_keymap("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", opts)
+	buf_set_keymap("n", "<C-.>", "<cmd>FzfLua lsp_code_actions<CR>", opts)
+	buf_set_keymap("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", opts)
 	buf_set_keymap("n", "gr", "<cmd>FzfLua lsp_references<CR>", opts)
 	buf_set_keymap("n", "gnd", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	buf_set_keymap("n", "gpd", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
@@ -91,3 +93,7 @@ require("onedarkpro").setup({
 })
 
 vim.cmd("colorscheme onedark")
+
+require("nvim-lightbulb").setup({
+	autocmd = { enabled = true },
+})

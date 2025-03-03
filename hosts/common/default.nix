@@ -103,4 +103,5 @@
       # Add more IdentityFile lines for other keys
   '';
 
+  services.openssh.enable = true;
 }

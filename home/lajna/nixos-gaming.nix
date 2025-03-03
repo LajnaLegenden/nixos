@@ -29,12 +29,13 @@
       chrome.enable = true;
       spotify.enable = true;
       theme.enable = true;
-
+      slack.enable = true;
       dunst = {
         enable = false;
         colorFile = "$HOME/.cache/wal/colors.sh";
         # You can add more custom settings here if needed
       };
+
     };
   };
 
