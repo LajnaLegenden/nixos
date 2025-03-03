@@ -12,6 +12,7 @@
 
   inputs = {
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -66,6 +67,7 @@
         nixos-work-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
+          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
             ./hosts/nixos-work-laptop
             inputs.kolide-launcher.nixosModules.kolide-launcher
           ];

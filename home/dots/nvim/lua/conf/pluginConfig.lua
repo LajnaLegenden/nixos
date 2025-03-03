@@ -44,6 +44,7 @@ for _, lsp in ipairs(servers) do
 		on_attach = on_attach,
 	})
 end
+
 lspconfig.emmet_language_server.setup({
 	filetypes = {
 		"css",

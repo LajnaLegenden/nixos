@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./kde-connect.nix
     ./wayland.nix
     ./hyprland.nix
     ./fonts.nix
@@ -15,7 +14,7 @@
     ./clickup.nix
     ./chrome.nix
     ./obsidian.nix
-    ./kdeconnect.nix
+    ./kde-connect.nix
     ./theme.nix
   ];
 

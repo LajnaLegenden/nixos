@@ -10,7 +10,6 @@
     ./thunar.nix
     ./docker.nix
     ./tailscale.nix
-    ./virtualbox.nix
     ./zsa.nix
     ./lmstudio.nix
   ];

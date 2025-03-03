@@ -28,11 +28,12 @@
       obsidian.enable = true;
       slack.enable = true;
       wallpaper.enable = true;
-      vesktop.enable = false;
+      vesktop.enable = true;
       thunderbird.enable = true;
       spotify.enable = true;
       clickup.enable = true;
       chrome.enable = true;
+      theme.enable = true;
       dunst = {
         enable = false;
         colorFile = "$HOME/.cache/wal/colors.sh";
@@ -58,8 +59,8 @@
       };
       monitor = [
         "desc:California Institute of Technology 0x1404,1920x1200@60,2560x800,1"
-        "desc:AOC AG271QG 0x01010101,2560x1440@60,-2560x0,1"
-        "desc:Agilent Technologies 1080p60     0x00000001,1920x1080@60,-1920x0,1"
+        "desc:AOC AG271QG 0x01010101,2560x1440@60,-1440x0,1, transform , 1"
+        "desc:Agilent Technologies 1080p60     0x00000001,1920x1080@60,-1080x0,1, transform , 1"
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@75,0x0,1"
         "desc:Hewlett Packard HP LE2202x CNT229P1PZ,1920x1080@60,760x-1080,1"
         "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,-1080x180,1,transform,3"
