@@ -34,6 +34,7 @@
       clickup.enable = true;
       chrome.enable = true;
       theme.enable = true;
+      connect.enable = true;
       dunst = {
         enable = false;
         colorFile = "$HOME/.cache/wal/colors.sh";

@@ -94,6 +94,5 @@ require("onedarkpro").setup({
 
 vim.cmd("colorscheme onedark")
 
-require("nvim-lightbulb").setup({
-	autocmd = { enabled = true },
-})
+vim.opt.termguicolors = true
+require("bufferline").setup{}
