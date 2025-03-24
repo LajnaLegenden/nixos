@@ -27,7 +27,6 @@ in
       ];
 
       settings = {
-
         cursor = {
           no_hardware_cursors = true;
         };
@@ -85,8 +84,9 @@ in
 
         decoration = {
           rounding = 10;
+          shadow.enabled = false;
           blur = {
-            enabled = true;
+            enabled = false;
             size = 3;
             passes = 1;
           };
@@ -96,12 +96,12 @@ in
           enabled = true;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
           animation = [
-            "windows, 1, 7, myBezier"
-            "windowsOut, 1, 7, default, popin 80%"
-            "border, 1, 10, default"
-            "borderangle, 1, 8, default"
-            "fade, 1, 7, default"
-            "workspaces, 1, 6, default"
+            "windows, 1, 3, myBezier"
+            "windowsOut, 1, 3, default, popin 80%"
+            "border, 1, 5, default"
+            "borderangle, 1, 5, default"
+            "fade, 1, 3, default"
+            "workspaces, 1, 3, default"
           ];
         };
 
@@ -116,6 +116,7 @@ in
 
         misc = {
           force_default_wallpaper = -1;
+          vfr= true;
         };
 
         "windowrule" = [
@@ -193,7 +194,6 @@ in
           # Brightness control
           ", XF86MonBrightnessUp, exec, brightnessctl set +5% && ~/.sh/brightness.sh"
           ", XF86MonBrightnessDown, exec, brightnessctl set 5%- && ~/.sh/brightness.sh"
-
         ];
 
         binde = [
@@ -217,6 +217,7 @@ in
       swaynotificationcenter
       brightnessctl
     ];
+
     services.hypridle = {
       enable = true;
       settings = {
@@ -229,7 +230,6 @@ in
           {
             timeout = 150;
             onTimeout = "brightnessctl -s set 10";
-            onResume = "brightnessctl -r";
           }
           {
             timeout = 150;

@@ -15,7 +15,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    pywal
     swww
     pywalfox-native
     libnotify
@@ -23,6 +22,7 @@
     networkmanager_dmenu
     networkmanagerapplet
     power-profiles-daemon
+    python2Full
   ];
 
 }

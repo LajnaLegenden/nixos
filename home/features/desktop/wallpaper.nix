@@ -25,6 +25,7 @@ in
       pywal
       swww
       pywalfox-native
+      wallust
     ];
 
     # Optional: Add Hyprland configuration

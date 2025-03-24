@@ -34,6 +34,7 @@
       clickup.enable = true;
       chrome.enable = true;
       theme.enable = true;
+      connect.enable = true;
       dunst = {
         enable = false;
         colorFile = "$HOME/.cache/wal/colors.sh";
@@ -58,27 +59,27 @@
         disable_logs = false;
       };
       monitor = [
-        "desc:California Institute of Technology 0x1404,1920x1200@60,2560x800,1"
-        "desc:AOC AG271QG 0x01010101,2560x1440@60,-1440x0,1, transform , 1"
-        "desc:Agilent Technologies 1080p60     0x00000001,1920x1080@60,-1080x0,1, transform , 1"
+        "desc:California Institute of Technology 0x1404,1920x1200@60,2560x0,1"
+        "desc:Dell Inc. DELL S2722QC CQ7JMD3,1920x1080@60,-1080x-300,1, transform , 1"
+        "desc:AOC AG271QG 0x01010101,2560x1440@60,0x0,1, transform , 0"
+        "desc:Agilent Technologies 1080p60     0x00000001,1920x1080@60,0x0,1, transform , 0"
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@75,0x0,1"
         "desc:Hewlett Packard HP LE2202x CNT229P1PZ,1920x1080@60,760x-1080,1"
         "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,-1080x180,1,transform,3"
-        "desc:Dell Inc. DELL S2722QC CQ7JMD3,3840x2160@60,0x0,1.5"
       ];
       workspace = [
-        "1, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3, default:true"
-        "2, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3"
-        "3, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3"
-        "4, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3"
-        "5, monitor:desc:AOC AG271QG 0x01010101"
-        "6, monitor:desc:AOC AG271QG 0x01010101"
-        "7, monitor:desc:AOC AG271QG 0x01010101"
-        "8, monitor:desc:AOC AG271QG 0x01010101"
-        "5, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
-        "6, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
-        "7, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
-        "8, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
+        "7, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3, default:true"
+        "8, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3"
+        "6, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3"
+        "5, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3"
+        "1, monitor:desc:AOC AG271QG 0x01010101"
+        "2, monitor:desc:AOC AG271QG 0x01010101"
+        "3, monitor:desc:AOC AG271QG 0x01010101"
+        "4, monitor:desc:AOC AG271QG 0x01010101"
+        "1, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
+        "2, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
+        "3, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
+        "4, monitor:desc:AOC AG271QG #ASNglWnZ7sjd"
         "9, monitor:desc:California Institute of Technology 0x1404"
         "10, monitor:desc:California Institute of Technology 0x1404"
         "1, monitor:desc:HP Inc. HP X34 6CM15009MZ, default:true"

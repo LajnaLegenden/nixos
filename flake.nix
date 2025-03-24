@@ -67,7 +67,7 @@
         nixos-work-laptop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
           modules = [
-          inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
+            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
             ./hosts/nixos-work-laptop
             inputs.kolide-launcher.nixosModules.kolide-launcher
           ];

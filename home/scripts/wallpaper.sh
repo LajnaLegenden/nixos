@@ -29,7 +29,7 @@ echo "Selected wallpaper: $WALLPAPER_PATH"
 echo "Updated current wallpaper file: $HOME/.cache/current_wallpaper"
 
 # Generate color scheme with pywal
-wal -i "$WALLPAPER_PATH"
+wallust run "$WALLPAPER_PATH"
 
 # Set the wallpaper with swww
 swww img "$WALLPAPER_PATH"

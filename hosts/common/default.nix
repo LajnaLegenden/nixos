@@ -18,7 +18,6 @@
     seahorse
     inputs.zen-browser.packages."${system}".specific
     inputs.ghostty.packages.x86_64-linux.default
-
   ];
   home-manager = {
     useUserPackages = true;
@@ -46,6 +45,9 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
+     permittedInsecurePackages = [
+                "python-2.7.18.8"
+              ];
     };
   };
 
