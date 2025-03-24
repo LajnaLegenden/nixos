@@ -24,6 +24,18 @@ local function set_keymap_with_word(mode, lhs, nvim_rhs, vscode_cmd)
 	end
 end
 
+-- Helper function to set keymap with visual selection
+local function set_keymap_with_selection(mode, lhs, nvim_rhs, vscode_cmd)
+	if in_vscode then
+		vim.keymap.set(mode, lhs, function()
+			-- VSCode handles the selection automatically when calling commands
+			vim.fn.VSCodeNotify(vscode_cmd)
+		end)
+	else
+		vim.keymap.set(mode, lhs, nvim_rhs)
+	end
+end
+
 -- File navigation
 set_keymap("n", "<leader>fg", ":FzfLua live_grep_native<CR>", "find-it-faster.findWithinFiles")
 set_keymap("n", "<leader>ff", ":FzfLua files<CR>", "workbench.action.quickOpen")
@@ -54,6 +66,22 @@ set_keymap_with_word(
 	':lua require"config.custom".grep_search_with_word()<CR>',
 	"find-it-faster.findWithinFiles"
 )
+
+-- Search with visual selection
+set_keymap_with_selection(
+	"v",
+	"<leader>d",
+	':lua require"config.custom".search_with_selection()<CR>',
+	"find-it-faster.findReferences"
+)
+
+set_keymap_with_selection(
+	"v",
+	"<leader>s",
+	':lua require"config.custom".grep_search_with_selection()<CR>',
+	"find-it-faster.findWithinFiles"
+)
+
 -- Numeric tab navigation
 for i = 1, 9 do
 	set_keymap(
