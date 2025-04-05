@@ -16,6 +16,7 @@
     ./obsidian.nix
     ./kde-connect.nix
     ./theme.nix
+    ./gammastep.nix
   ];
 
   home.packages = with pkgs; [

@@ -35,6 +35,7 @@
       chrome.enable = true;
       theme.enable = true;
       connect.enable = true;
+      gammastep.enable = true;
       dunst = {
         enable = false;
         colorFile = "$HOME/.cache/wal/colors.sh";

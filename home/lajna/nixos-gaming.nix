@@ -30,6 +30,7 @@
       spotify.enable = true;
       theme.enable = true;
       slack.enable = true;
+      gammastep.enable = true;
       dunst = {
         enable = false;
         colorFile = "$HOME/.cache/wal/colors.sh";
