@@ -11,8 +11,12 @@
   '';
 
   inputs = {
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hyprland = {
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -21,15 +25,18 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs/nixos-23.11";
+    };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+    };
     kolide-launcher = {
       url = "github:/kolide/nix-agent/main";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
     };
   };
 
@@ -55,56 +62,51 @@
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
-      nixosConfigurations = {
-        nixos-gaming = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/nixos-gaming
-            ./hosts/nixos-gaming
-            inputs.kolide-launcher.nixosModules.kolide-launcher
-          ];
+      nixosConfigurations = let
+        # Common modules shared across all systems
+        commonModules = [
+          inputs.kolide-launcher.nixosModules.kolide-launcher
+        ];
+        
+        # Map of system-specific configurations
+        systemConfigs = {
+          nixos-gaming = {
+            modules = [
+              ./hosts/nixos-gaming
+            ];
+          };
+          nixos-work-laptop = {
+            modules = [
+              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
+              ./hosts/nixos-work-laptop  
+            ];
+          };
+          nixos-gaming-laptop = {
+            modules = [
+              ./hosts/nixos-gaming-laptop
+            ];
+          };
         };
-        nixos-work-laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
-            ./hosts/nixos-work-laptop
-            inputs.kolide-launcher.nixosModules.kolide-launcher
-          ];
-        };
-        nixos-gaming-laptop = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          modules = [
-            ./hosts/nixos-gaming-laptop
-            inputs.kolide-launcher.nixosModules.kolide-launcher
-          ];
-        };
-      };
-      homeConfigurations = {
-        "lajna@nixos-gaming" = home-manager.lib.homeManagerConfiguration {
+
+      in
+        builtins.mapAttrs (hostname: config: 
+          nixpkgs.lib.nixosSystem {
+            specialArgs = { inherit inputs outputs; };
+            modules = commonModules ++ config.modules;
+          }
+        ) systemConfigs;
+      homeConfigurations = builtins.mapAttrs
+        (hostname: _: home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages."x86_64-linux";
           extraSpecialArgs = { inherit inputs outputs; };
           modules = [
-            ./home/lajna/nixos-gaming.nix
-            inputs.son.homeManagerModules.default
+            ./home/lajna/${hostname}.nix
           ];
+        })
+        {
+          "lajna@nixos-gaming" = {};
+          "lajna@nixos-work-laptop" = {};
+          "lajna@nixos-gaming-laptop" = {};
         };
-        "lajna@nixos-work-laptop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/lajna/nixos-work-laptop.nix
-            inputs.son.homeManagerModules.default
-          ];
-        };
-        "lajna@nixos-gaming-laptop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/lajna/nixos-gaming-laptop.nix
-            inputs.son.homeManagerModules.default
-          ];
-        };
-      };
     };
 }
