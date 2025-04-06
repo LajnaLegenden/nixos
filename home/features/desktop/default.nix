@@ -17,6 +17,7 @@
     ./kde-connect.nix
     ./theme.nix
     ./gammastep.nix
+    ./claude.nix
   ];
 
   home.packages = with pkgs; [

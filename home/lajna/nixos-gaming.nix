@@ -26,6 +26,7 @@
       firefox.enable = true;
       vesktop.enable = true;
       wallpaper.enable = true;
+      obsidian.enable = true;
       chrome.enable = true;
       spotify.enable = true;
       theme.enable = true;
