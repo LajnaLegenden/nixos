@@ -85,6 +85,12 @@
               ./hosts/nixos-work-laptop  
             ];
           };
+          pong = {
+            modules = [
+              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
+              ./hosts/pong
+            ];
+          };
           nixos-gaming-laptop = {
             modules = [
               ./hosts/nixos-gaming-laptop
@@ -111,6 +117,7 @@
           "lajna@nixos-gaming" = {};
           "lajna@nixos-work-laptop" = {};
           "lajna@nixos-gaming-laptop" = {};
+          "lajna@pong" = {};
         };
     };
 }
