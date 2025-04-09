@@ -40,10 +40,11 @@ in
         gnumake
         cmake
         # Node.js and TypeScript
-        nodejs
-        nodePackages.npm
+        nodejs_20
         nodePackages.typescript
         nodePackages.ts-node
+        node-gyp
+        nodePackages.node-gyp-build
         # Bun
         bun
         # Package managers
@@ -75,6 +76,7 @@ in
         luarocks
         python3
         python3Packages.pip
+        python312Packages.distutils
         nil
         zeal
         gitkraken

@@ -13,7 +13,7 @@ in
   config = mkIf cfg.enable {
     home.file.".npm-global".source =
       config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.npm-global";
-  
+
     home.sessionPath = [
       "$HOME/.npm-global/bin"
     ];
@@ -24,11 +24,9 @@ in
       NX_DAEMON = "false";
     };
 
-
-
     # Optionally, create the directory if it doesn't exist
-    home.activation.createNpmGlobal = config.lib.dag.entryAfter [ "writeBoundary" ] ''
-      mkdir -p "$HOME/.npm-global"
-    '';
+    #    home.activation.createNpmGlobal = config.lib.dag.entryAfter [ "writeBoundary" ] ''
+    #     mkdir -p "$HOME/.npm-global"
+    #  '';
   };
 }

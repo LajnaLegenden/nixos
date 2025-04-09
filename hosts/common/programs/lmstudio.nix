@@ -9,4 +9,4 @@
   environment.systemPackages = with pkgs; [
     lmstudio
   ];
-  }
+}

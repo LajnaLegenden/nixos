@@ -1,4 +1,3 @@
-
 {
   config,
   lib,
@@ -13,7 +12,7 @@ in
   options.features.desktop.connect.enable = mkEnableOption "install kde connect";
 
   config = mkIf cfg.enable {
-services.kdeconnect.enable = true;
+    services.kdeconnect.enable = true;
 
   };
 }

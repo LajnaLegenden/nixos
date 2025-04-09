@@ -47,9 +47,9 @@
   wayland.windowManager.hyprland = {
 
     extraConfig = ''
- windowrulev2 = workspace 9 silent,class:^(Slack)$
-      windowrulev2 = workspace 10 silent,class:^(thunderbird)$
-      '';
+      windowrulev2 = workspace 9 silent,class:^(Slack)$
+           windowrulev2 = workspace 10 silent,class:^(thunderbird)$
+    '';
     settings = {
       exec-once = [
         "blueman-applet"

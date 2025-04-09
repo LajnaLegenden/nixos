@@ -46,9 +46,9 @@
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;
-     permittedInsecurePackages = [
-                "python-2.7.18.8"
-              ];
+      permittedInsecurePackages = [
+        "python-2.7.18.8"
+      ];
     };
   };
 

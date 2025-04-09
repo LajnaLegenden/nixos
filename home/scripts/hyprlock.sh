@@ -2,7 +2,8 @@
 
 CONFIG_FILE="$HOME/.config/hypr/hyprlock.conf"
 WALLPAPER_FILE="$HOME/nixConfig/bgs/current"
-COLORS_FILE="$HOME/.cache/wal/colors.json"
+# get colors from wallust latest one
+COLORS_FILE="$HOME/.cache/wallust/04/08/2025
 
 # Ensure the wallpaper file exists
 if [ ! -f "$WALLPAPER_FILE" ]; then
@@ -43,10 +44,6 @@ general {
     enable_fingerprint = true
     fingerprint_ready_message = "<i>Use TouchID to unlock</i>"
     fingerprint_present_message = "<i>Verifying...</i>"
-}
-
-general {
-    immediate_render = true
 }
 
 background {
@@ -105,7 +102,7 @@ label {
 
 label {
   monitor = 
-  text = cmd[update:1000] date +"\""%k:%M"\""
+  text = cmd[update:1000] date +""%k:%M""
   color = rgba(242, 243, 244, 0.75)
   font_size = 93
   font_family = SF Pro Display Bold

@@ -1,4 +1,3 @@
-
 {
   pkgs,
   config,
@@ -21,10 +20,12 @@
     style.name = "kvantum";
   };
 
-  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
-    General.theme = "Catppuccin-Macchiato-Blue";
-  };
- gtk = {
+  xdg.configFile."Kvantum/kvantum.kvconfig".source =
+    (pkgs.formats.ini { }).generate "kvantum.kvconfig"
+      {
+        General.theme = "Catppuccin-Macchiato-Blue";
+      };
+  gtk = {
     enable = true;
     theme = {
       name = "Catppuccin-Macchiato-Standard-Blue-Dark";
@@ -68,4 +69,4 @@
       name = "Catppuccin-Macchiato-Standard-Blue-Dark";
     };
   };
-  }
+}

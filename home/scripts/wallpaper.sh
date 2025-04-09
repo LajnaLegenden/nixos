@@ -3,7 +3,7 @@
 # Set the path to your wallpapers folder
 WALLPAPERS_FOLDER="$HOME/nixConfig/bgs"
 # Set the path for the symlink to the current wallpaper
-CURRENT_WALLPAPER="$WALLPAPERS_FOLDER/current"
+CURRENT_WALLPAPER="$HOME/.cache/current_wallpaper"
 
 # Check if the wallpapers folder exists
 if [ ! -d "$WALLPAPERS_FOLDER" ]; then

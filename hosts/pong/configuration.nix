@@ -46,10 +46,10 @@
     LC_TELEPHONE = "sv_SE.UTF-8";
     LC_TIME = "sv_SE.UTF-8";
   };
-
+  services.xserver.enable = true;
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
-
+  services.displayManager.sddm.wayland.enable = true;
   programs.zsh.enable = true;
 
   # Configure keymap in X11
@@ -110,7 +110,7 @@
 
   services.fprintd.tod.enable = true;
 
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

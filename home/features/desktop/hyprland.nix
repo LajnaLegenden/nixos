@@ -61,7 +61,7 @@ in
           "AQ_DRM_DEVICES,/dev/dri/card1:/dev/dri/card2"
           "XDG_SESSION_TYPE,wayland"
           "ELECTRON_OZONE_PLATFORM_HINT,auto"
-];
+        ];
         input = {
           kb_layout = "se";
           follow_mouse = 1;
@@ -116,7 +116,7 @@ in
 
         misc = {
           force_default_wallpaper = -1;
-          vfr= true;
+          vfr = true;
         };
 
         "windowrule" = [

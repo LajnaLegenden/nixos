@@ -66,58 +66,64 @@
     {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       overlays = import ./overlays { inherit inputs; };
-      nixosConfigurations = let
-        # Common modules shared across all systems
-        commonModules = [
-          inputs.kolide-launcher.nixosModules.kolide-launcher
-        ];
-        
-        # Map of system-specific configurations
-        systemConfigs = {
-          nixos-gaming = {
-            modules = [
-              ./hosts/nixos-gaming
-            ];
-          };
-          nixos-work-laptop = {
-            modules = [
-              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
-              ./hosts/nixos-work-laptop  
-            ];
-          };
-          pong = {
-            modules = [
-              inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
-              ./hosts/pong
-            ];
-          };
-          nixos-gaming-laptop = {
-            modules = [
-              ./hosts/nixos-gaming-laptop
-            ];
-          };
-        };
+      nixosConfigurations =
+        let
+          # Common modules shared across all systems
+          commonModules = [
+            inputs.kolide-launcher.nixosModules.kolide-launcher
+          ];
 
-      in
-        builtins.mapAttrs (hostname: config: 
+          # Map of system-specific configurations
+          systemConfigs = {
+            nixos-gaming = {
+              modules = [
+                ./hosts/nixos-gaming
+              ];
+            };
+            nixos-work-laptop = {
+              modules = [
+                inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-11th-gen
+                ./hosts/nixos-work-laptop
+              ];
+            };
+            pong = {
+              modules = [
+                inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x1-12th-gen
+                ./hosts/pong
+              ];
+            };
+            nixos-gaming-laptop = {
+              modules = [
+                ./hosts/nixos-gaming-laptop
+              ];
+            };
+          };
+
+        in
+        builtins.mapAttrs (
+          hostname: config:
           nixpkgs.lib.nixosSystem {
             specialArgs = { inherit inputs outputs; };
             modules = commonModules ++ config.modules;
           }
         ) systemConfigs;
-      homeConfigurations = builtins.mapAttrs
-        (hostname: _: home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages."x86_64-linux";
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            ./home/lajna/${hostname}.nix
-          ];
-        })
-        {
-          "lajna@nixos-gaming" = {};
-          "lajna@nixos-work-laptop" = {};
-          "lajna@nixos-gaming-laptop" = {};
-          "lajna@pong" = {};
-        };
+      homeConfigurations =
+        builtins.mapAttrs
+          (
+            hostname: _:
+            home-manager.lib.homeManagerConfiguration {
+              pkgs = nixpkgs.legacyPackages."x86_64-linux";
+              extraSpecialArgs = { inherit inputs outputs; };
+              modules = [
+                ./home/lajna/${hostname}.nix
+              ];
+            }
+          )
+          {
+            "lajna@nixos-gaming" = { };
+            "lajna@nixos-work-laptop" = { };
+            "lajna@nixos-gaming-laptop" = { };
+            "lajna@pong" = { };
+          };
     };
 }
