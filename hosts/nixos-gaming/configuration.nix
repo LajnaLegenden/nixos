@@ -14,7 +14,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -110,6 +109,11 @@
     cmake
     cpio
     meson
+    atlauncher
+   (pkgs.ollama.override { 
+      acceleration = "cuda";
+    })
+prismlauncher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -3,6 +3,17 @@ require("fzf-lua").setup({
 	fzf_opts = { ["-i"] = "" },
 })
 
+require("telescope").setup({
+	extensions = {
+		fzf = {
+			fuzzy = true,	
+		},
+	},
+})
+
+require("telescope").load_extension("refactoring")
+
+
 -- LSP
 local lspconfig = require("lspconfig")
 local servers = {
@@ -92,6 +103,12 @@ require("onedarkpro").setup({
 	},
 })
 
+
+
+
+require('refactoring').setup({
+  show_success_message = true
+})
 vim.cmd("colorscheme onedark")
 
 vim.opt.termguicolors = true

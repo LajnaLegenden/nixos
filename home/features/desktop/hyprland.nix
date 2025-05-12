@@ -23,7 +23,7 @@ in
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.default;
       plugins = [
-        inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
+#        inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
       ];
 
       settings = {
@@ -96,12 +96,12 @@ in
           enabled = true;
           bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
           animation = [
-            "windows, 1, 3, myBezier"
-            "windowsOut, 1, 3, default, popin 80%"
-            "border, 1, 5, default"
-            "borderangle, 1, 5, default"
-            "fade, 1, 3, default"
-            "workspaces, 1, 3, default"
+            "windows, 1, 2, myBezier"
+            "windowsOut, 1, 2, default, popin 80%"
+            "border, 1, 3, default"
+            "borderangle, 1, 3, default"
+            "fade, 1, 2, default"
+            "workspaces, 1, 2, default"
           ];
         };
 
@@ -121,8 +121,8 @@ in
 
         "windowrule" = [
           "opacity 1.0 1.0,class:.*"
-          "opacity 0.8 0.8,class:.*,floating:0,fullscreen:0"
           "opacity 1.0 0.7,class:^(kitty)$"
+          "opacity 0.9 0.9,class:^(cursor)$"
         ];
 
         windowrulev2 = "suppressevent maximize, class:.*";

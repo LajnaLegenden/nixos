@@ -27,17 +27,17 @@ return {
 			-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
 			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 			-- See the full "keymap" documentation for information on defining your own keymap.
-			keymap = { preset = "enter" },
+			keymap = { preset = "default" },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer", "copilot" },
+				default = { "lsp", "path", "snippets", "buffer" },
 				providers = {
-					copilot = {
+					--[[ copilot = {
 						name = "copilot",
 						module = "blink-cmp-copilot",
-						score_offset = 5,
+						score_offset = ,
 						async = true,
 						transform_items = function(_, items)
 							local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
@@ -48,7 +48,7 @@ return {
 							end
 							return items
 						end,
-					},
+					},]]
 				},
 			},
 			appearance = {

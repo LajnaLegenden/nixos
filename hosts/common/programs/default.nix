@@ -12,6 +12,8 @@
     ./tailscale.nix
     ./zsa.nix
     ./lmstudio.nix
+    ./zip.nix
+    ./brave.nix
   ];
 
   environment.systemPackages = with pkgs; [

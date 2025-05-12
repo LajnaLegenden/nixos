@@ -18,6 +18,8 @@
     seahorse
     inputs.zen-browser.packages."${system}".specific
   ];
+  programs.direnv.enable = true;
+  programs.direnv.enableZshIntegration = true;
   home-manager = {
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs outputs; };

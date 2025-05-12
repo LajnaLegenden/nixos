@@ -40,6 +40,10 @@ set_keymap("n", "_", "@='kddpk'<CR>", "editor.action.moveLinesUpAction")
 set_keymap("v", "-", ":m '>+1<CR>gv=gv", "editor.action.moveLinesDownAction")
 set_keymap("v", "_", ":m '<-2<CR>gv=gv", "editor.action.moveLinesUpAction")
 
+-- Line diagnostic
+set_keymap("n", "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", "editor.action.showDefinitionPreviewHover")
+set_keymap("v", "<leader>ld", ":lua vim.diagnostic.open_float()<CR>", "editor.action.showDefinitionPreviewHover")
+
 -- Search/Find references
 set_keymap_with_word(
 	"n",
@@ -70,3 +74,36 @@ set_keymap("n", "<leader>bp", ":bprevious<CR>", "workbench.action.previousEditor
 set_keymap("n", "<leader>bd", ":bdelete<CR>", "workbench.action.closeActiveEditor")
 set_keymap("n", "<leader>bb", ":b#<CR>", "workbench.action.navigateBack")
 set_keymap("n", "<leader>t", ":FzfLua buffers<CR>", "workbench.action.quickOpen")
+
+-- Refactoring
+vim.keymap.set(
+	{"n", "x"},
+	"<leader>rr",
+	function() require('telescope').extensions.refactoring.refactors() end,
+	{desc = "Show refactoring options"}
+)
+
+-- You can also use below = true here to to change the position of the printf
+-- statement (or set two remaps for either one). This remap must be made in normal mode.
+vim.keymap.set(
+	"n", 
+	"<leader>rp",
+	function() require('refactoring').debug.printf({below = false}) end,
+	{desc = "Add printf debug statement"}
+)
+
+-- Print var
+vim.keymap.set(
+	{"x", "n"}, 
+	"<leader>rv", 
+	function() require('refactoring').debug.print_var() end,
+	{desc = "Print variable debug statement"}
+)
+-- Supports both visual and normal mode
+
+vim.keymap.set(
+	"n", 
+	"<leader>rc", 
+	function() require('refactoring').debug.cleanup({}) end,
+	{desc = "Clean up debug statements"}
+)
