@@ -2,6 +2,7 @@
 {
   imports = [
     ./wayland.nix
+    ./office.nix
     ./hyprland.nix
     ./fonts.nix
     ./firefox.nix

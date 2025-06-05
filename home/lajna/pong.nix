@@ -54,15 +54,16 @@
       debug = {
         disable_logs = false;
       };
-      monitor = [
-        "desc:AU Optronics 0x9EA9,1920x1200@60,2560x0,1"
-        "desc:Dell Inc. DELL S2722QC CQ7JMD3,3840x2160@60,-2160x-300,1, transform , 1"
-        "desc:AOC AG271QG 0x01010101,2560x1440@60,0x0,1, transform , 0"
-        "desc:AOC AG271QG ##ASNglWnZ7sjd,2560x1440@120,0x0,1, transform , 0"
-        "desc:Agilent Technologies 1080p60     0x00000001,1920x1080@60,0x0,1, transform , 0"
-        "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@75,0x0,1"
-        "desc:Hewlett Packard HP LE2202x CNT229P1PZ,1920x1080@60,760x-1080,1"
-        "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,-1080x180,1,transform,3"
+      env = [
+      "AQ_NO_MODIFIERS,1"
+      ];
+                   monitor = [
+        "desc:AU Optronics 0x9EA9,1920x1200@60,4720x890,1"
+        "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,4720x-1030,1, transform , 3"
+        "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@60,5800x-790,1"
+        "desc:Samsung Electric Company LC27G5xT HK2W401603,2560x1440@120,9240x-790,1"
+        "desc:Dell Inc. DELL S2722QC CQ7JMD3,3840x2160@60,0x0,1, transform , 1"
+        "desc:AOC AG271QG ##ASNglWnZ7sjd,2560x1440@120,2160x720,1"
       ];
       workspace = [
         "7, monitor:desc:Dell Inc. DELL S2722QC CQ7JMD3, default:true"

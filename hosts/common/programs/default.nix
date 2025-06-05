@@ -14,6 +14,7 @@
     ./lmstudio.nix
     ./zip.nix
     ./brave.nix
+    ./1pass.nix
   ];
 
   environment.systemPackages = with pkgs; [

@@ -14,7 +14,24 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
-
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "nixos-gaming";
+      systems = [ "x86_64-linux" ];
+      maxJobs = 8;
+      speedFactor = 2;
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    }
+  ];
+  programs.ssh.extraConfig = ''
+Host builder
+  HostName nixos-gaming 
+  Port 22
+  User builder
+  IdentitiesOnly yes
+  IdentityFile /root/.ssh/remotebuild
+  '';
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

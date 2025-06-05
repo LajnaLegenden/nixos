@@ -55,6 +55,7 @@
         "desc:LG Electronics LG ULTRAGEAR 009NTUW40494,2560x1440@143.97,3440x0,1"
         "desc:Hewlett Packard HP LE2202x CNT229P1PZ,1920x1080@60,760x-1080,1"
         "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,-1080x180,1,transform,3"
+        ",preferred,auto,0,0,1"
       ];
       workspace = [
         "1, monitor:desc:HP Inc. HP X34 6CM15009MZ, default:true"

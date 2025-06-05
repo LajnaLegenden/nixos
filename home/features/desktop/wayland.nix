@@ -286,6 +286,7 @@ in
       ydotool
       wttrbar
       ulauncher
+      albert
       dunst
     ];
 
