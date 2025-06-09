@@ -16,6 +16,7 @@
     ./zip.nix
     ./brave.nix
     ./1pass.nix
+    ./nix-ld.nix
   ];
 
   environment.systemPackages = with pkgs; [

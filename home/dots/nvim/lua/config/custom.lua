@@ -46,7 +46,7 @@ local function search_with_word()
 	-- Pick word under the cursor
 	local current_word = vim.fn.expand("<cword>")
 	-- Trigger FzfLua files screen with search state set to current_word
-	require("fzf-lua").files({ query = current_word })
+	require("telescope.builtin").find_files({ default_text = current_word, prompt_title = "Find Files (" .. current_word .. ")" })
 end
 
 -- Triggers :FzfLua files with variable
@@ -56,7 +56,7 @@ local function grep_search_with_word()
 	-- Pick word under the cursor
 	local current_word = vim.fn.expand("<cword>")
 	-- Trigger FzfLua files screen with search state set to current_word
-	require("fzf-lua").live_grep_native({ query = current_word })
+	require("telescope.builtin").grep_string({ search = current_word })
 	-- Trigger backspace, because FzfLua files seems to add ">" sign at the
 	-- end of query value
 end

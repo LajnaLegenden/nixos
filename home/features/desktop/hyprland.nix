@@ -50,6 +50,8 @@ in
           "hyprctl dispatch workspace 1"
           "nm-applet"
           "ulauncher --hide-window"
+          "wl-paste --type text --watch cliphist store"
+          "wl-paste --type image --watch cliphist store"
           "QT_QPA_PLATFORM=wayland albert"
           "swww-daemon"
           ".config/hypr/set_random_wallpaper.sh"

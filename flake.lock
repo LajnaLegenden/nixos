@@ -41,11 +41,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746097297,
-        "narHash": "sha256-5p+V4mfNhVqDBsGdxIEQzigJh34Nwdhb/6pN+tQ8Vio=",
+        "lastModified": 1748912502,
+        "narHash": "sha256-a0mwy9WmOHUOAJcU4Z7FMYiIh3PeUQdI/cp3m47o8zc=",
         "owner": "k3d3",
         "repo": "claude-desktop-linux-flake",
-        "rev": "83401cf9c8a45458ba102dc9753a51be405162b9",
+        "rev": "a8f6fc6edeeb49a817443559f2b5e2a3da924b91",
         "type": "github"
       },
       "original": {

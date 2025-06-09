@@ -93,7 +93,7 @@ in
         lua-language-server
         vscode-langservers-extracted
         emmet-language-server
-
+	vtsls
         go
         gopls
       ];

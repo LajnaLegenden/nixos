@@ -281,6 +281,7 @@ in
       wf-recorder
       wl-mirror
       wl-clipboard
+      cliphist
       wlogout
       wtype
       ydotool
