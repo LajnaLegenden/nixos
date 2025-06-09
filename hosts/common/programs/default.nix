@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ./rustdesk.nix
     ./thunar.nix
     ./docker.nix
     ./tailscale.nix
