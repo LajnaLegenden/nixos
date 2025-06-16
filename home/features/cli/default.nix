@@ -7,6 +7,7 @@
     ./dev.nix
     ./env.nix
     ./tmux.nix
+    ./session.nix
   ];
   programs.zoxide = {
     enable = true;

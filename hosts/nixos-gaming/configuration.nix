@@ -17,6 +17,16 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+   boot.loader.systemd-boot.configurationLimit = 20; # Optional: limit boot entries
+  boot.loader.systemd-boot.extraEntries = {
+    "windows.conf" = ''
+      title Windows 10/11
+      efi /EFI/Microsoft/Boot/bootmgfw.efi
+      sort-key windows
+    '';
+  };
+  # Enable os-prober to detect other operating systems
+  boot.loader.grub.useOSProber = true; # This helps even with systemd-boot
 
   networking.hostName = "nixos-gaming"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

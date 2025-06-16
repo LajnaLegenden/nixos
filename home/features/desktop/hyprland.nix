@@ -46,6 +46,7 @@ in
 
         exec-once = [
           "waybar"
+	  "discord"
           "kdeconnect-indicator"
           "hyprctl dispatch workspace 1"
           "nm-applet"
@@ -125,7 +126,6 @@ in
         "windowrule" = [
           "opacity 1.0 1.0,class:.*"
           "opacity 1.0 0.7,class:^(kitty)$"
-          "opacity 0.9 0.9,class:^(cursor)$"
         ];
 
         windowrulev2 = "suppressevent maximize, class:.*";
