@@ -91,6 +91,10 @@
       executable = true;
       source = "${../scripts/volume.sh}";
     };
+    ".tmux.conf" = {
+      executable = true;
+      source = "${../dots/tmux.conf}";
+    };
     ".sh/restartAll.sh" = {
       executable = true;
       source = "${../scripts/restartAll.sh}";
