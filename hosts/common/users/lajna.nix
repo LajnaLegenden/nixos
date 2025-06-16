@@ -24,4 +24,5 @@
     packages = [ inputs.home-manager.packages.${pkgs.system}.default ];
   };
   home-manager.users.lajna = import ../../../home/lajna/${config.networking.hostName}.nix;
+  home-manager.backupFileExtension = "bak";
 }

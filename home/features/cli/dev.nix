@@ -96,6 +96,7 @@ in
 	vtsls
         go
         gopls
+        nixd
       ];
       programs.git = {
         enable = true;

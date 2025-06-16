@@ -8,8 +8,46 @@
   pkgs,
   ...
 }:
-
-{
+let
+  # Define your config folders
+  configFolders = [
+    "nvim"
+    "swaync" 
+    "dunst"
+    "wlogout"
+    "waybar"
+    "wal"
+    "matugen"
+    "gtk-3.0"
+    "gtk-4.0"
+  ];
+  
+  # Define script folders (different base path)
+  scriptFolders = [
+    "scripts"
+  ];
+  
+  # Helper function to create symlink configs
+  createSymlinkConfig = folder: {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixConfig/home/dots/${folder}";
+    recursive = true;
+    onChange = ''
+      echo "${folder} config changed, files in ~/.config/${folder}:"
+      ls -la ~/.config/${folder}/
+    '';
+  };
+  
+  # Helper function for script configs
+  createScriptConfig = folder: {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixConfig/home/${folder}";
+    recursive = true;
+    onChange = ''
+      echo "${folder} config changed, files in ~/.config/${folder}:"
+      ls -la ~/.config/${folder}/
+    '';
+  };
+  
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = lib.mkDefault "lajna";
@@ -76,52 +114,30 @@
     };
   };
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
-  home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-    ".sh/brightness.sh" = {
-      executable = true;
-      source = "${../scripts/brightness.sh}";
+   xdg.configFile = 
+    # Generate config folder mappings
+    (builtins.listToAttrs (map (folder: {
+      name = folder;
+      value = createSymlinkConfig folder;
+    }) configFolders))
+    
+    # Generate script folder mappings  
+    // (builtins.listToAttrs (map (folder: {
+      name = folder;
+      value = createScriptConfig folder;
+    }) scriptFolders))
+    
+    # Special case for ulauncher (different handling)
+    // {
+      "ulauncher/.home-manager-copy-trigger" = {
+        text = "This file triggers the copy operation";
+        onChange = ''
+          rm -rf ${config.xdg.configHome}/ulauncher
+          cp -R ${../dots/ulauncher} ${config.xdg.configHome}/ulauncher
+          chmod -R u+w ${config.xdg.configHome}/ulauncher
+        '';
+      };
     };
-    ".sh/volume.sh" = {
-      executable = true;
-      source = "${../scripts/volume.sh}";
-    };
-    ".tmux.conf" = {
-      executable = true;
-      source = "${../dots/tmux.conf}";
-    };
-    ".sh/restartAll.sh" = {
-      executable = true;
-      source = "${../scripts/restartAll.sh}";
-    };
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-  };
-  # Workaround to make file wrtieable
-  xdg.configFile."ulauncher/.home-manager-copy-trigger" = {
-    text = "This file triggers the copy operation";
-    onChange = ''
-      rm -rf ${config.xdg.configHome}/ulauncher
-      cp -R ${../dots/ulauncher} ${config.xdg.configHome}/ulauncher
-      chmod -R u+w ${config.xdg.configHome}/ulauncher
-    '';
-  };
-  xdg.configFile."nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixConfig/home/dots/nvim";
-    recursive = true;
-    onChange = ''
-      echo "Nvim config changed, files in ~/.config/nvim:"
-      ls -la ~/.config/nvim/
-    '';
-  };
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. If you don't want to manage your shell through Home

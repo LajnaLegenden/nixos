@@ -29,10 +29,10 @@ echo "Selected wallpaper: $WALLPAPER_PATH"
 echo "Updated current wallpaper file: $HOME/.cache/current_wallpaper"
 
 # Generate color scheme with pywal
-wallust run "$WALLPAPER_PATH"
-
+wallust run "$CURRENT_WALLPAPER"
+matugen image -m "dark" $CURRENT_WALLPAPER 
 # Set the wallpaper with swww
-swww img "$WALLPAPER_PATH"
+swww img "$CURRENT_WALLPAPER"
 
 # Update Firefox colors with pywalfox
 pywalfox update

@@ -10,6 +10,7 @@ vim.lsp.enable('vtsls')
 vim.lsp.enable('eslint')
 vim.lsp.enable('biome')
 vim.lsp.enable('gopls')
+vim.lsp.enable('nixd')
 
 -- Show line numbers
 vim.opt.number = true

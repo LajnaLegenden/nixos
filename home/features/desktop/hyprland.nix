@@ -25,7 +25,12 @@ in
       plugins = [
 #        inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
       ];
-
+  extraConfig = ''
+      source = ${config.xdg.configHome}/hypr/colors.conf
+      $color8 = $on_primary_fixed
+$color11 = $on_surface
+    '';
+    sourceFirst = true;
       settings = {
         cursor = {
           no_hardware_cursors = true;
@@ -44,9 +49,13 @@ in
           };
         };
 
+        "$color8" = "$on_primary_fixed";
+"$color11" = "$on_surface";
+
         exec-once = [
           "waybar"
-	  "discord"
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" 
+	        "discord"
           "kdeconnect-indicator"
           "hyprctl dispatch workspace 1"
           "nm-applet"
@@ -57,6 +66,11 @@ in
           "swww-daemon"
           ".config/hypr/set_random_wallpaper.sh"
           "eval $(ssh-agent)"
+          "$HOME/.config/waybar/launch.sh"
+          "$HOME/.config/scripts/gtk.sh"
+        ];
+        source =[
+          "${config.xdg.configHome}/hypr/colors.conf"
         ];
 
         env = [
@@ -76,15 +90,15 @@ in
           sensitivity = 0;
         };
 
-        general = {
-          gaps_in = 5;
-          gaps_out = 20;
-          border_size = 2;
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
-          layout = "dwindle";
-          allow_tearing = false;
-        };
+       general = {
+      gaps_in = 10;
+      gaps_out = 14;
+      border_size = 3;
+      "col.active_border" = "$color11";
+      "col.inactive_border" = "$color8";
+      layout = "dwindle";
+      resize_on_border = true;
+    };
 
         decoration = {
           rounding = 10;
@@ -217,6 +231,7 @@ in
           "$mainMod, mouse:273, resizewindow"
         ];
       };
+    
     };
     home.packages = with pkgs; [
       swaynotificationcenter
