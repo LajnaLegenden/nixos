@@ -118,7 +118,10 @@ in {
     # Generate config folder mappings
     (builtins.listToAttrs (map (folder: {
       name = folder;
-      value = createSymlinkConfig folder;
+      value = if folder == "gtk-3.0" || folder == "gtk-4.0" then {
+        source = ../dots/${folder};
+        recursive = true;
+      } else createSymlinkConfig folder;
     }) configFolders))
     
     # Generate script folder mappings  

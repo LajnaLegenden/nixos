@@ -53,6 +53,7 @@ $color11 = $on_surface
 "$color11" = "$on_surface";
 
         exec-once = [
+          "hypridle"
           "waybar"
           "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP" 
 	        "discord"

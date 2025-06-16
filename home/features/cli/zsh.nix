@@ -17,7 +17,7 @@ in
       NIX_PATH=nixpkgs=channel:nixos-unstable
       NIX_LOG=info
       ";
-      initExtraFirst = ''
+      initContent = lib.mkBefore ''
         # P10k instant prompt
         if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
           source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"

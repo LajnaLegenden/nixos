@@ -17,6 +17,8 @@ in
 
     };
 
+    gtk.enable = true;
+
     home.packages = with pkgs; [
       grim
       hyprlock
@@ -37,6 +39,7 @@ in
       rofi
       pywal
       matugen
+      glib
     ];
   };
 }
