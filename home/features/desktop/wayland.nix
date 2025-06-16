@@ -36,7 +36,6 @@ in
       dunst
       rofi
       pywal
-      glib
       matugen
     ];
   };

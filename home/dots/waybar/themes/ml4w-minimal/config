@@ -56,10 +56,8 @@
 
     // Modules Left
     "modules-left": [
-        "custom/appmenuicon",
+        "clock",
         "hyprland/workspaces",
-        "group/links",
-        "group/quicklinks",
         "custom/empty"
     ],
 
@@ -81,7 +79,6 @@
         "group/hardware",
         "group/tools",
         "custom/exit",
-        "clock",
         "tray",
         "custom/notification",
         "custom/ml4w-welcome"

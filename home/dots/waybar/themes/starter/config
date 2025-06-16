@@ -32,10 +32,7 @@
 
     // Modules Left
     "modules-left": [
-        "custom/appmenu",
-        "custom/settings",
         //"wlr/taskbar",
-        "group/quicklinks",
         "hyprland/window",
         "custom/starter"
     ],
@@ -47,7 +44,6 @@
 
     // Modules Right    
     "modules-right": [
-        "custom/updates",
         "pulseaudio",
         //"backlight",
         "bluetooth",
@@ -59,7 +55,6 @@
         "custom/hyprshade",
         "tray",
         "custom/exit",
-        "custom/ml4w-welcome",
         "clock"
     ]
 }
