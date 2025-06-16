@@ -15,6 +15,7 @@
   ];
   environment.systemPackages = with pkgs; [
     hyprpolkitagent
+    pavucontrol
     seahorse
     inputs.zen-browser.packages."${system}".specific
   ];

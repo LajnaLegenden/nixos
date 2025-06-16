@@ -9,8 +9,12 @@ vim.lsp.enable('luals')
 vim.lsp.enable('vtsls')
 vim.lsp.enable('eslint')
 vim.lsp.enable('biome')
+vim.lsp.enable('gopls')
 
 -- Show line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = "yes"
+vim.opt.shiftwidth = 2        -- Set indentation width
+vim.opt.expandtab = true      -- Use spaces instead of tabs
+vim.opt.smartindent = true    -- Auto indent new lines
