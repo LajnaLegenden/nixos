@@ -1,4 +1,3 @@
-
 {
   pkgs,
   config,
@@ -8,6 +7,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-  rustdesk
+    rustdesk
   ];
 }

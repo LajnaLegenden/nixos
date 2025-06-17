@@ -17,7 +17,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-   boot.loader.systemd-boot.configurationLimit = 20; # Optional: limit boot entries
+  boot.loader.systemd-boot.configurationLimit = 20; # Optional: limit boot entries
   boot.loader.systemd-boot.extraEntries = {
     "windows.conf" = ''
       title Windows 10/11
@@ -120,10 +120,10 @@
     cpio
     meson
     atlauncher
-   (pkgs.ollama.override { 
+    (pkgs.ollama.override {
       acceleration = "cuda";
     })
-prismlauncher
+    prismlauncher
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

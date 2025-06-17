@@ -55,9 +55,9 @@
         disable_logs = false;
       };
       env = [
-      "AQ_NO_MODIFIERS,1"
+        "AQ_NO_MODIFIERS,1"
       ];
-                   monitor = [
+      monitor = [
         "desc:AU Optronics 0x9EA9,1920x1200@60,4720x890,1"
         "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,4720x-1030,1, transform , 3"
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@60,5800x-790,1"

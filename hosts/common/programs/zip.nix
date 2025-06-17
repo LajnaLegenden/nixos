@@ -7,9 +7,9 @@
 
 {
   environment.systemPackages = with pkgs; [
-  peazip
-  file-roller
-  unzip
-  zip
+    peazip
+    file-roller
+    unzip
+    zip
   ];
 }

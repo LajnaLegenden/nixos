@@ -44,11 +44,11 @@
   wayland.windowManager.hyprland = {
     settings = {
       env = [
-          "WLR_NO_HARDWARE_CURSORS,1"
-          "GBM_BACKEND,nvidia-drm"
-          "LIBVA_DRIVER_NAME,nvidia"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1"
+        "WLR_NO_HARDWARE_CURSORS,1"
+        "GBM_BACKEND,nvidia-drm"
+        "LIBVA_DRIVER_NAME,nvidia"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+        "AQ_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1"
       ];
       monitor = [
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@165,0x0,1"

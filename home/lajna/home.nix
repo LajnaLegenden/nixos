@@ -12,7 +12,7 @@ let
   # Define your config folders
   configFolders = [
     "nvim"
-    "swaync" 
+    "swaync"
     "dunst"
     "wlogout"
     "waybar"
@@ -21,12 +21,12 @@ let
     "gtk-3.0"
     "gtk-4.0"
   ];
-  
+
   # Define script folders (different base path)
   scriptFolders = [
     "scripts"
   ];
-  
+
   # Helper function to create symlink configs
   createSymlinkConfig = folder: {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixConfig/home/dots/${folder}";
@@ -36,7 +36,7 @@ let
       ls -la ~/.config/${folder}/
     '';
   };
-  
+
   # Helper function for script configs
   createScriptConfig = folder: {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixConfig/home/${folder}";
@@ -46,8 +46,9 @@ let
       ls -la ~/.config/${folder}/
     '';
   };
-  
-in {
+
+in
+{
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = lib.mkDefault "lajna";
@@ -105,31 +106,51 @@ in {
         opacity = 0.8;
       };
       font = {
-      normal = { family = "FiraCode Nerd Font"; style = "Regular"; };
-      bold = { family = "FiraCode Nerd Font"; style = "Bold"; };
-      italic = { family = "FiraCode Nerd Font"; style = "Italic"; };
-      bold_italic = { family = "FiraCode Nerd Font"; style = "Bold Italic"; };
-      size = 12;
-    };
+        normal = {
+          family = "FiraCode Nerd Font";
+          style = "Regular";
+        };
+        bold = {
+          family = "FiraCode Nerd Font";
+          style = "Bold";
+        };
+        italic = {
+          family = "FiraCode Nerd Font";
+          style = "Italic";
+        };
+        bold_italic = {
+          family = "FiraCode Nerd Font";
+          style = "Bold Italic";
+        };
+        size = 12;
+      };
     };
   };
 
-   xdg.configFile = 
+  xdg.configFile =
     # Generate config folder mappings
-    (builtins.listToAttrs (map (folder: {
-      name = folder;
-      value = if folder == "gtk-3.0" || folder == "gtk-4.0" then {
-        source = ../dots/${folder};
-        recursive = true;
-      } else createSymlinkConfig folder;
-    }) configFolders))
-    
-    # Generate script folder mappings  
-    // (builtins.listToAttrs (map (folder: {
-      name = folder;
-      value = createScriptConfig folder;
-    }) scriptFolders))
-    
+    (builtins.listToAttrs (
+      map (folder: {
+        name = folder;
+        value =
+          if folder == "gtk-3.0" || folder == "gtk-4.0" then
+            {
+              source = ../dots/${folder};
+              recursive = true;
+            }
+          else
+            createSymlinkConfig folder;
+      }) configFolders
+    ))
+
+    # Generate script folder mappings
+    // (builtins.listToAttrs (
+      map (folder: {
+        name = folder;
+        value = createScriptConfig folder;
+      }) scriptFolders
+    ))
+
     # Special case for ulauncher (different handling)
     // {
       "ulauncher/.home-manager-copy-trigger" = {
