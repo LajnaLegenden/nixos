@@ -28,6 +28,7 @@
     networkmanagerapplet
     power-profiles-daemon
     python2Full
+    google-cloud-sdk
   ];
 
 }

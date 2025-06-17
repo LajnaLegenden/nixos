@@ -120,9 +120,9 @@
                                         fi
                                         if [[ -d "''$path" ]]; then
                                           if command -v fd &>/dev/null; then
-                                            fd -H --type d --max-depth "''${depth:-''${TS_MAX_DEPTH:-1}}" '^\.git$' "''$path" --exec dirname {} \;
+                                            fd -H --type d --type f --max-depth "''${depth:-''${TS_MAX_DEPTH:-1}}" '^\.git$' "''$path" --exec dirname {} \;
                                           else
-                                            find "''$path" -mindepth 2 -maxdepth "$((''${depth:-''${TS_MAX_DEPTH:-1}} + 1))" -name ".git" -type d -exec dirname {} \;
+                                            find "''$path" -mindepth 2 -maxdepth "$((''${depth:-''${TS_MAX_DEPTH:-1}} + 1))" -name ".git" \( -type d -o -type f \) -exec dirname {} \;
                         fi
                           fi
                           done
@@ -131,7 +131,7 @@
                 if [[ $# -eq 1 ]]; then
                   selected="$1"
                 else
-                  selected=$(find_dirs | fzf)
+                  selected=$(find_dirs | fzf --preview 'exa -l --color=always {}')
                     fi
 
                     if [[ -z $selected ]]; then
