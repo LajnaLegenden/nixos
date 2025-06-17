@@ -12,7 +12,7 @@
       zsh.enable = true;
       fzf.enable = true;
       neofetch.enable = true;
-      tmux.enable = false;
+      tmux.enable = true;
       env.enable = false;
       dev = {
         enable = true;
@@ -62,6 +62,7 @@
         "desc:Hewlett Packard HP LE2202x CNT22720C6,1920x1080@60,4720x-1030,1, transform , 3"
         "desc:HP Inc. HP X34 6CM15009MZ,3440x1440@60,5800x-790,1"
         "desc:Samsung Electric Company LC27G5xT HK2W401603,2560x1440@120,9240x-790,1"
+        "desc:LTM LCD 0x01010101,2560x1440@120,9240x-790,1"
         "desc:Dell Inc. DELL S2722QC CQ7JMD3,3840x2160@60,0x0,1, transform , 1"
         "desc:AOC AG271QG ##ASNglWnZ7sjd,2560x1440@120,2160x720,1"
       ];
