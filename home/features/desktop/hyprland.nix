@@ -170,7 +170,13 @@ in
           "opacity 1.0 0.7,class:^(kitty)$"
         ];
 
-        windowrulev2 = "suppressevent maximize, class:.*";
+        windowrulev2 = [
+          "suppressevent maximize, class:.*"
+          "float,class:^(gitify)$"
+          "pin,class:^(gitify)$"
+          "size 400 600,class:^(gitify)$"
+          "center,class:^(gitify)$"
+        ];
 
         "$mainMod" = "SUPER";
 
