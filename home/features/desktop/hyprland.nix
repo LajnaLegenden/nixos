@@ -25,13 +25,15 @@ in
       plugins = [
         #        inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
       ];
+      
       extraConfig = ''
-              source = ${config.xdg.configHome}/hypr/colors.conf
-              $color8 = $on_primary_fixed
-        $color11 = $on_surface
+        source = ${config.xdg.configHome}/hypr/colors.conf
       '';
       sourceFirst = true;
       settings = {
+        source = [
+        "${config.xdg.configHome}/hypr/colors.conf"
+        ];
         cursor = {
           no_hardware_cursors = true;
         };
@@ -48,9 +50,6 @@ in
             fix_mouse = true;
           };
         };
-
-        "$color8" = "$on_primary_fixed";
-        "$color11" = "$on_surface";
 
         exec-once = [
           "hypridle"
@@ -69,9 +68,6 @@ in
           "eval $(ssh-agent)"
           "$HOME/.config/waybar/launch.sh"
           "$HOME/.config/scripts/gtk.sh"
-        ];
-        source = [
-          "${config.xdg.configHome}/hypr/colors.conf"
         ];
 
         env = [
@@ -95,8 +91,8 @@ in
           gaps_in = 10;
           gaps_out = 14;
           border_size = 3;
-          "col.active_border" = "$color11";
-          "col.inactive_border" = "$color8";
+          "col.active_border" = "$on_surface";
+          "col.inactive_border" = "$on_primary_fixed";
           layout = "dwindle";
           resize_on_border = true;
         };

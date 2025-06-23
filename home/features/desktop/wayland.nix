@@ -14,7 +14,6 @@ in
   config = mkIf cfg.enable {
     programs.waybar = {
       enable = true;
-
     };
 
     gtk.enable = true;
@@ -33,6 +32,7 @@ in
       wtype
       ydotool
       wttrbar
+      hypridle
       ulauncher
       albert
       dunst
@@ -40,6 +40,7 @@ in
       pywal
       matugen
       glib
+      playerctl
     ];
   };
 }
