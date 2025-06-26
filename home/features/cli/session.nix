@@ -41,6 +41,24 @@
                     tmux switch-client -t "$1"
                       fi
                 }
+
+                kill_session() {
+                  local session_name="$1"
+                  if has_session "$session_name"; then
+                    tmux kill-session -t "$session_name"
+                    echo "Killed session: $session_name"
+                  else
+                    echo "Session '$session_name' does not exist"
+                    exit 1
+                  fi
+                }
+
+                list_sessions_for_kill() {
+                  tmux list-sessions -F "#{session_name}" 2>/dev/null | \
+                    while read -r session_name; do
+                      echo "[KILL] $session_name"
+                    done
+                }
       create_session_with_layout() {
           local session_name="''$1"
           local session_path="''$2"
@@ -128,11 +146,41 @@
                           done
                       }
 
+                # Handle command line arguments
                 if [[ $# -eq 1 ]]; then
-                  selected="$1"
-                else
-                  selected=$(find_dirs | fzf --preview 'exa -l --color=always {}')
+                  if [[ "$1" == "--kill" || "$1" == "-k" ]]; then
+                    # Kill mode: show only existing sessions
+                    if ! tmux list-sessions &>/dev/null; then
+                      echo "No tmux sessions found"
+                      exit 0
                     fi
+                    selected=$(list_sessions_for_kill | fzf --prompt="Select session to kill: ")
+                    if [[ -z $selected ]]; then
+                      exit 0
+                    fi
+                    # Extract session name from [KILL] prefix
+                    if [[ "$selected" =~ ^\[KILL\]\ (.+)$ ]]; then
+                      session_name="''${BASH_REMATCH[1]}"
+                      kill_session "$session_name"
+                      exit 0
+                    fi
+                  elif [[ "$1" == "--help" || "$1" == "-h" ]]; then
+                    echo "tmux-sessionizer - A tmux session manager"
+                    echo ""
+                    echo "Usage:"
+                    echo "  tmux-sessionizer              # Interactive session selection"
+                    echo "  tmux-sessionizer <path>       # Create/switch to session at path"
+                    echo "  tmux-sessionizer --kill       # Kill existing session"
+                    echo "  tmux-sessionizer -k           # Kill existing session (short)"
+                    echo "  tmux-sessionizer --help       # Show this help"
+                    echo "  tmux-sessionizer -h           # Show this help (short)"
+                    exit 0
+                  else
+                    selected="$1"
+                  fi
+                else
+                  selected=$(find_dirs | fzf --preview 'if [[ -d "{}" && -d "{}/.git" ]]; then echo "=== Git Status ==="; cd "{}" && git status --short --branch 2>/dev/null; echo; fi; exa -l --color=always {}')
+                fi
 
                     if [[ -z $selected ]]; then
                       exit 0

@@ -27,8 +27,20 @@ in
       plugins = with pkgs.tmuxPlugins; [
         sensible
         vim-tmux-navigator
-        catppuccin
         yank
+        {
+          plugin = pkgs.tmuxPlugins.mkTmuxPlugin {
+            pluginName = "onedarkpro-tmux";
+            version = "unstable-2025-06-19"; # Update this date as needed
+            src = pkgs.fetchFromGitHub {
+              owner = "EvanZhouDev";
+              repo = "onedarkpro-tmux";
+              rev = "35f21c262655b995db75fd34a09296cb6ec23153"; # or specific commit hash for reproducibility
+              sha256 = "sha256-zCNIFsagH5UwhAuFMbdGjgXa601SS7ApnC/k4JGHYMQ="; # Leave empty first, nix will tell you the correct hash
+            };
+            rtpFilePath = "onedarkpro.tmux"; # This tells it the correct filename
+          };
+        }
       ];
 
       # Additional configuration
